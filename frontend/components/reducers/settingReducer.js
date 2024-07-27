@@ -11,6 +11,7 @@ export const settingSlice = createSlice({
     isChatbotOpen: false,
     userInputLatest: '',
     fromForum: '',
+    username: ''
   },
   reducers: {
     setLoading: (state, action) => ({
@@ -40,6 +41,10 @@ export const settingSlice = createSlice({
     setAlert: (state, action) => ({
       ...state,
       alert: action.payload,
+    }),
+    setUsername: (state, action) => ({
+      ...state,
+      username: action.payload,
     }),
   },
 });

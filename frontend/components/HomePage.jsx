@@ -52,7 +52,7 @@ function HomePage({ data }) {
         <div
           className='bg-red-500 rounded-full p-5 px-10 font-bold text-white cursor-pointer text-2xl'
           onClick={() => {
-            router.push('/login'); // Assuming LoginPage is under the pages directory
+            router.push('/login'); 
             dispatch(SettingActions.setSelected(3));
           }}
         >

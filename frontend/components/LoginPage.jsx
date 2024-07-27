@@ -222,6 +222,7 @@ function LoginPage({ data }) {
                 onClick={() => {
                   if (allowLogin) {
                     dispatch(SettingActions.setIsLogin(true));
+                    dispatch(SettingActions.setUsername("Jing Jie"));
                     router.push('/dashboard');
                   } else {
                     dispatch(SettingActions.setLoading(true));

@@ -5,6 +5,9 @@ export const routes = {
   dashboard: {
     to: () => '/dashboard',
   },
+  donate1: {
+    to: () => '/donate1',
+  },
   login: {
     to: () => '/login',
   },

@@ -16,7 +16,6 @@ function MenuSection({menuRow}) {
         const isActive = activeSelected === i.key;
         const isDisabled = !isLogin;
 
-        console.log(isDisabled)
         return (
           <div
             className={`${!isDisabled ? 'cursor-pointer' : ' cursor-not-allowed'} ${i.label == "Personality"? isActive ? 'bg-red-500 text-white p-2 rounded-2xl ' : 'border border-2 border-red-500 text-white p-2 rounded-2xl ': isActive ? ' px-5 bg-blue-500 hover:bg-gray-200 text-white p-2 rounded-2xl ' : ' px-5'}`}
