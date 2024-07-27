@@ -1,6 +1,6 @@
 <p align="center">
   <a href="" rel="noopener">
- <img src="" alt="HealthUs"></a>
+ <img src="https://github.com/Zoriannn/HealthMe/logo 2.png" alt="HealthUs"></a>
 </p>
 <h3 align="center">HealthUs</h3>
 
@@ -17,7 +17,7 @@
 
 ## 🧐 Project Name <a id = "project_name"></a>
 
-Our project name is called HealthUs.
+Our project name is called HealthMe.
 
 ## 💡 Tagline <a id = "tagline"></a>
 
@@ -25,14 +25,28 @@ Community-Driven Insurance : Where Community Shapes Insurance
 
 ## ⛓️ The Problem it Solves <a id = "problem"></a>
 
-1. Assist those in need:
-    - Provide financial assistance to those who cannot afford insurance.
+## Problems Solved by the Project
 
-2. Eliminating Manual Verification:<br />
-    desc
+### Lack of Transparency in Funding
+**Problem**: Traditional funding mechanisms often lack transparency, leading to mistrust and reduced donations.
+**Solution**: By using blockchain, all transactions are recorded immutably, providing complete transparency. Donors can see exactly how their funds are being used, increasing trust and engagement.
 
-3. Increased Trust and Transparency:
-    - Community-driven insurance encourages trust and transparency among members.
+### Inefficiencies in Fund Distribution
+**Problem**: Manual processes for distributing funds can be slow and prone to errors, delaying crucial aid to those in need.
+**Solution**: Smart contracts automate the distribution of funds, ensuring timely and accurate payments based on predefined criteria.
+
+### Difficulty in Matching Donors and Recipients
+**Problem**: Finding the right donors for specific needs can be challenging, resulting in unmet needs and wasted resources.
+**Solution**: AI integration matches receiver requests with available donors, optimizing resource allocation and ensuring needs are met efficiently.
+
+### Ensuring Accountability and Proper Use of Funds
+**Problem**: There can be concerns about the misuse or misallocation of funds.
+**Solution**: Smart contracts enforce the terms of funding, releasing funds only when certain conditions are met, ensuring proper use.
+
+### Encouraging Community Engagement
+**Problem**: Recipients often lack ways to give back to their communities, which can perpetuate cycles of dependency.
+**Solution**: AI-generated community projects provide recipients with opportunities to contribute back to society, fostering a culture of giving and community support.
+
 
 ## 🚀 Challenges we ran into <a id = "challenges"></a>
 
