@@ -2,7 +2,7 @@
   <a href="" rel="noopener">
  <img src="./logo.png" alt="HealthUs"></a>
 </p>
-<h3 align="center">HealthUs</h3>
+<h1 align="center">HealthMe</h1>
 
 
 ## 📝 Table of Contents
