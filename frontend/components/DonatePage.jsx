@@ -29,7 +29,7 @@ function DonatePage({ data }) {
           />
         </div>
         <div className='w-1/2 p-4'>
-          {/* Future content for the right side */}
+          <img src="./images/smart_contract.png" alt="smart_contract" className="w-full h-fit object-cover" />
         </div>
       </div>
     </Layout>
