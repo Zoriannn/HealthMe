@@ -14,12 +14,36 @@ class ActionProvider {
     this.createCustomMessage = createCustomMessage;
   }
 
+ 
+
+  handleMoney(){
+    this.updateChatbotState(this.createChatBotMessage(
+      'By default, your sum of money will be distributed to patients who match the criteria below:',
+    ));
+    this.updateChatbotState(this.createChatBotMessage(
+      `
+- Domain: All`,
+    ));
+    this.updateChatbotState(this.createChatBotMessage(
+      `
+- Age: All`,
+    ));
+    this.updateChatbotState(this.createChatBotMessage(
+      `
+- Family Members: All`,
+    ));
+    this.updateChatbotState(this.createChatBotMessage(
+      `
+      Would you like to change the criteria of patients to donate to?`,
+    ));
+  }
+
   handleChangeCriteria() {
-    const message = this.createChatBotMessage('Would you like to change the criteria of patients to donate to?');
+    const message = this.createChatBotMessage('__Would you like to change the criteria of patients to donate to?__');
     this.updateChatbotState(message);
   }
 
-  handleOrphanedChildrenWithCancer() {
+  handleOrphanedChildrenWithCancer(){
     this.updateChatbotState(this.createChatBotMessage(
       'Your list has been updated as below:',
     ));
@@ -33,13 +57,8 @@ class ActionProvider {
     ));
     this.updateChatbotState(this.createChatBotMessage(
       `
-- Family Members: 0`,
+- Family Members:0`,
     ));
-  }
-
-  handleDefault() {
-    const message = this.createChatBotMessage('I didn\'t understand that. Could you please clarify?');
-    this.updateChatbotState(message);
   }
 
   updateChatbotState(message) {
