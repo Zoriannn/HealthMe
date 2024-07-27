@@ -2,11 +2,11 @@
 import React from 'react';
 import _ from 'lodash';
 
-import HomePage from '../components/HomePage';
+import DashboardPage from '../components/DashboardPage';
 
 function Home() {
   return (
-    <HomePage />
+    <DashboardPage />
   );
 }
 
