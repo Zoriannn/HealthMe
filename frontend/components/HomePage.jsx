@@ -34,7 +34,7 @@ function HomePage({ data }) {
       <div className='text-xl flex flex-col justify-center align-center items-center my-24'>
 
         <div className='w-2/5'>
-          <img src="/images/logo.png" alt="logo" />
+          <img src="./images/logo.png" alt="logo" />
     
         </div>
 
