@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import dynamic from 'next/dynamic';
 import { useRouter } from 'next/router';
 import { useDispatch, useSelector } from 'react-redux';
@@ -20,6 +20,7 @@ function DashboardPage({ data }) {
   const router = useRouter();
   const dispatch = useDispatch();
   const username = useSelector((state) => state.setting.username);
+  const [donatedAmount, setDonatedAmount]= useState(50000)
 
   useEffect(() => {
     dispatch(SettingActions.setLoading(false));
@@ -43,7 +44,7 @@ function DashboardPage({ data }) {
   const tilesInfo = [
     {
       label: 'Donated Amount',
-      amount: '50,000',
+      amount: donatedAmount,
       antdIcon: <DollarOutlined style={{ fontSize: '40px', color: 'orange' }} />,
     },
     {
@@ -87,7 +88,7 @@ function DashboardPage({ data }) {
         <div className="w-2/3 my-5">
           <div className="grid grid-cols-3 gap-6">
             {tilesInfo.map((i, index) => (
-              <div key={index} className="bg-gray-100 shadow-md rounded-md p-4 flex flex-col items-center hover:bg-gray-200 transition duration-200 ease-in-out transform hover:scale-105">
+              <div key={index} className="bg-gray-100 shadow-md rounded-md p-4 flex flex-col items-center hover:bg-gray-200 transition duration-200 ease-in-out transform hover:scale-105" onClick={()=>{setDonatedAmount(donatedAmount+50000)}}>
                 <div className="mb-2 text-center">{i.antdIcon}</div>
                 <div className="text-[25px] text-center ">{i.label}</div>
                 <div className="font-bold text-2xl text-center">{i.amount}</div>
