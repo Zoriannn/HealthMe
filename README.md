@@ -26,13 +26,13 @@ Community-Driven Insurance : Where Community Shapes Insurance
 ## ⛓️ The Problem it Solves <a id = "problem"></a>
 
 1. Assist those in need:
-
+desc
 
 2. Eliminating Manual Verification:
-
+desc
 
 3. Increased Trust and Transparency:
-
+desc
 
 ## 🚀 Challenges we ran into <a id = "challenges"></a>
 
