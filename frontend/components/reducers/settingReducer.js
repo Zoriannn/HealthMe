@@ -7,6 +7,7 @@ export const settingSlice = createSlice({
     loading: false,
     alert: [],
     selected: null,
+    isLogin: false,
     isChatbotOpen: false,
     userInputLatest: '',
     fromForum: '',
@@ -20,6 +21,10 @@ export const settingSlice = createSlice({
       ...state,
       selected: action.payload,
     }),
+    setIsLogin: (state, action) => ({
+      ...state,
+      isLogin: action.payload,
+    }),
     setIsChatbotOpen: (state, action) => ({
       ...state,
       isChatbotOpen: action.payload,
@@ -31,6 +36,10 @@ export const settingSlice = createSlice({
     setFromForum: (state, action) => ({
       ...state,
       fromForum: action.payload,
+    }),
+    setAlert: (state, action) => ({
+      ...state,
+      alert: action.payload,
     }),
   },
 });

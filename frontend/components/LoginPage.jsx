@@ -14,16 +14,19 @@ import cloneDeep from 'lodash/cloneDeep';
 // import Link from 'next/link';
 import _ from 'lodash';
 import Aos from 'aos';
+import { Button, message, Space } from 'antd';
 import { ArrowRightOutlined } from '@ant-design/icons';
 import Layout from './general/Layout';
 import { SettingActions } from './reducers/settingReducer';
 import { logoIcon } from '../images';
 import { routes } from '../route';
+
 function LoginPage({ data }) {
   const router = useRouter();
   const dispatch = useDispatch();
+  const [messageApi, contextHolder] = message.useMessage();
   const [activeTab, setActiveTab] = useState('login');
-
+  const [allowLogin, setAllowLogin] = useState(false);
   useEffect(() => {
     dispatch(SettingActions.setLoading(false));
     Aos.init();
@@ -57,8 +60,12 @@ function LoginPage({ data }) {
         </div>
         {activeTab === 'signup' && (
           <div className='border border-gray-300 p-8 shadow-lg w-fit max-w-sm rounded-t-3xl'>
-            <img src="./images/logoCircle.png" alt="logo" className="w-16 content-center"/>
+            <div className='flex justify-center align-center items-center w-full'>
+              <img src="./images/logoCircle.png" alt="logo" width={80} height={80} />
+            </div>
+
             <form>
+              {contextHolder}
               <div className='mb-4'>
                 <label htmlFor='email' className='block text-gray-700'>Email*</label>
                 <input
@@ -111,7 +118,8 @@ function LoginPage({ data }) {
                   className='w-full px-3 py-2 border border-gray-300 rounded'
                   placeholder='Enter your password'
                 />
-                <p className='block text-gray-700 text-opacity-60'>Password must have at least 8 characters, at least 1 Uppercase, at least 1 Lowercase 
+                <p className='block text-gray-700 text-opacity-60'>
+                  Password must have at least 8 characters, at least 1 Uppercase, at least 1 Lowercase
                   , at least 1 Number and at least 1 Special Character(@, $, !, *, %, ?, #, &, _)
                 </p>
               </div>
@@ -135,7 +143,17 @@ function LoginPage({ data }) {
         )}
         {activeTab === 'login' && (
           <div className='border border-gray-300 p-8 shadow-lg w-full max-w-sm rounded-t-3xl'>
-            <img src="./images/logoCircle.png" alt="logo" className="w-16 content-center"/>
+            <div className='flex justify-center align-center items-center w-full'>
+              <img
+                onClick={() => {
+                  setAllowLogin(true);
+                }}
+                src="./images/logoCircle.png"
+                alt="logo"
+                width={80}
+                height={80}
+              />
+            </div>
             <form>
               <div className='mb-4'>
                 <label htmlFor='signup-email' className='block text-gray-700'>Email:</label>
@@ -167,6 +185,15 @@ function LoginPage({ data }) {
               <button
                 type='button' // Change to 'button' to prevent form submission
                 className='w-full bg-red-500 text-white py-2 px-4 rounded font-bold'
+                onClick={() => {
+                  if (allowLogin) {
+                    dispatch(SettingActions.setIsLogin(true));
+                    router.push('/dashboard');
+                  } else {
+                    message.error('Wrong login credentials')
+
+                  }
+                }}
               >
                 Log In
               </button>
