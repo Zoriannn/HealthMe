@@ -1,6 +1,6 @@
 <p align="center">
   <a href="" rel="noopener">
- <img src="https://github.com/Zoriannn/HealthMe/logo 2.png" alt="HealthUs"></a>
+ <img src="images/logo.png" alt="HealthUs"></a>
 </p>
 <h3 align="center">HealthUs</h3>
 
@@ -24,8 +24,6 @@ Our project name is called HealthMe.
 Community-Driven Insurance : Where Community Shapes Insurance
 
 ## ⛓️ The Problem it Solves <a id = "problem"></a>
-
-## Problems Solved by the Project
 
 ### Lack of Transparency in Funding
 **Problem**: Traditional funding mechanisms often lack transparency, leading to mistrust and reduced donations.
