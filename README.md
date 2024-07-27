@@ -21,7 +21,7 @@ Our project name is called HealthMe.
 
 ## 💡 Tagline <a id = "tagline"></a>
 
-Community-Driven Insurance : Where Community Shapes Insurance
+Your Wealth for all. The Help for Everyone.
 
 ## ⛓️ The Problem it Solves <a id = "problem"></a>
 

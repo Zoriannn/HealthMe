@@ -1,4 +1,4 @@
-class ActionProvider {
+class ActionProvider1 {
   constructor(
     createChatBotMessage,
     setStateFunc,
@@ -16,48 +16,31 @@ class ActionProvider {
 
  
 
-  handleMoney(){
+  handleQuestion(){
     this.updateChatbotState(this.createChatBotMessage(
-      'By default, your sum of money will be distributed to patients who match the criteria below:',
+      'Analysing...',
     ));
     this.updateChatbotState(this.createChatBotMessage(
       `
-- Domain: All`,
+Age: 43 & Disabled(verified)`,
     ));
     this.updateChatbotState(this.createChatBotMessage(
       `
-- Age: All`,
+There is a donation available for your case. Please submit your current salary slip.`,
     ));
     this.updateChatbotState(this.createChatBotMessage(
       `
-- Family Members: All`,
+Analysis Completed!`,
     ));
     this.updateChatbotState(this.createChatBotMessage(
       `
-      Would you like to change the criteria of patients to donate to?`,
+You are eligible, would you like to proceed. [The contract stated the payment will be directly pay to the hospital]`,
     ));
   }
 
-  handleChangeCriteria() {
-    const message = this.createChatBotMessage('Would you like to change the criteria of patients to donate to?');
-    this.updateChatbotState(message);
-  }
-
-  handleOrphanedChildrenWithCancer(){
+  handleEnd(){
     this.updateChatbotState(this.createChatBotMessage(
-      'Your list has been updated as below:',
-    ));
-    this.updateChatbotState(this.createChatBotMessage(
-      `
-- Domain: Cancer (All)`,
-    ));
-    this.updateChatbotState(this.createChatBotMessage(
-      `
-- Age: <18`,
-    ));
-    this.updateChatbotState(this.createChatBotMessage(
-      `
-- Family Members:0`,
+      'Processing completed',
     ));
   }
 
@@ -69,4 +52,4 @@ class ActionProvider {
   }
 }
 
-export default ActionProvider;
+export default ActionProvider1;

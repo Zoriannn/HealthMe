@@ -12,20 +12,20 @@ import { Carousel } from "react-responsive-carousel";
 import { useDispatch, useSelector } from "react-redux";
 import cloneDeep from "lodash/cloneDeep";
 // import Link from 'next/link';
-import _ from 'lodash';
-import Aos from 'aos';
-import { Button, message, Space } from 'antd';
-import { ArrowRightOutlined } from '@ant-design/icons';
-import Layout from './general/Layout';
-import { setLoading, SettingActions } from './reducers/settingReducer';
-import { logoIcon } from '../images';
-import { routes } from '../route';
+import _ from "lodash";
+import Aos from "aos";
+import { Button, message, Space } from "antd";
+import { ArrowRightOutlined } from "@ant-design/icons";
+import Layout from "./general/Layout";
+import { setLoading, SettingActions } from "./reducers/settingReducer";
+import { logoIcon } from "../images";
+import { routes } from "../route";
 
 function LoginPage({ data }) {
   const router = useRouter();
   const dispatch = useDispatch();
   const [messageApi, contextHolder] = message.useMessage();
-  const [activeTab, setActiveTab] = useState('login');
+  const [activeTab, setActiveTab] = useState("login");
   const [allowLogin, setAllowLogin] = useState(false);
   useEffect(() => {
     dispatch(SettingActions.setLoading(false));
@@ -44,7 +44,7 @@ function LoginPage({ data }) {
   return (
     <Layout>
       <div className="text-xl flex flex-col justify-center items-center my-24">
-        <div className="flex mb-6">
+        <div className="flex mb-4">
           <button
             onClick={() => handleTabChange("login")}
             className={`px-6 py-2 font-bold text-2xl ${
@@ -67,14 +67,16 @@ function LoginPage({ data }) {
           </button>
         </div>
         {activeTab === "signup" && (
-          <div className="border border-gray-300 p-8 shadow-lg w-1/2 rounded-t-3xl">
+          <div className="border border-gray-300 p-8 shadow-lg w-1/2 rounded-3xl">
             <div className="mb-4 flex align-center justify-center items-center flex-col">
               <img
                 src="./images/logoCircle.png"
                 alt="logo"
                 className="w-16 flex content-center align-center justify-center items-center"
               />
-              <h1 className="text-blue-700 font-bold">KYC Submission</h1>
+              <h1 className="text-blue-700 font-bold text-base">
+                KYC Submission
+              </h1>
             </div>
             <form>
               <div className="mb-4">
@@ -129,7 +131,7 @@ function LoginPage({ data }) {
                   />
                 </div>
               </div>
-              <div className="mb-6">
+              <div className="mb-4">
                 <label htmlFor="password" className="block text-gray-700">
                   Password*
                 </label>
@@ -145,7 +147,7 @@ function LoginPage({ data }) {
                   least 1 Special Character(@, $, !, *, %, ?, #, &, _)
                 </p>
               </div>
-              <div className="mb-6">
+              <div className="mb-4">
                 <label htmlFor="password" className="block text-gray-700">
                   Re-enter your Password*
                 </label>
@@ -156,7 +158,7 @@ function LoginPage({ data }) {
                   placeholder="Enter your password again"
                 />
               </div>
-              <div className="w-full px-3 py-2 flex align-center justify-center items-center">
+              <div className="w-full py-2 flex align-center justify-center items-center">
                 <input type="checkbox" id="agree" name="agree" />
                 <label for="agree">
                   I agree to the{" "}
@@ -177,17 +179,17 @@ function LoginPage({ data }) {
           </div>
         )}
         {activeTab === "login" && (
-          <div className="border border-gray-300 p-8 shadow-lg w-full max-w-sm rounded-t-3xl">
+          <div className="border border-gray-300 p-8 shadow-lg w-full max-w-sm rounded-3xl">
             <div className="mb-4 flex align-center justify-center items-center flex-col">
               <img
-              onClick={() => {
-                setAllowLogin(true);
-              }}
+                onClick={() => {
+                  setAllowLogin(true);
+                }}
                 src="./images/logoCircle.png"
                 alt="logo"
                 className="w-16 content-center"
               />
-              <h1 className="block text-blue-700 font-bold">Welcome</h1>
+              <h1 className="text-blue-700 font-bold text-base">Welcome</h1>
             </div>
             <form>
               <div className="mb-4">
@@ -215,7 +217,7 @@ function LoginPage({ data }) {
                   placeholder="Enter your password"
                 />
               </div>
-            
+
               <button
                 type="button" // Change to 'button' to prevent form submission
                 className="w-full bg-red-500 text-white py-2 px-4 rounded font-bold"
@@ -229,10 +231,8 @@ function LoginPage({ data }) {
 
                     setTimeout(() => {
                       dispatch(SettingActions.setLoading(false));
-                      message.error('Wrong login credentials')
-                    }, 1000)
-                  
-
+                      message.error("Wrong login credentials");
+                    }, 1000);
                   }
                 }}
               >

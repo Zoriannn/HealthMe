@@ -9,10 +9,10 @@ class MessageParser {
 
     if (lowercase.includes("change") || lowercase.includes("criteria")) {
       this.actionProvider.handleChangeCriteria();
-    } else if (lowercase.includes("orphaned children with cancer")) {
+    } else if (lowercase.includes("children with cancer")) {
       this.actionProvider.handleOrphanedChildrenWithCancer();
-    } else {
-      this.actionProvider.handleDefault();
+    } else if (lowercase.includes("50000")){
+      this.actionProvider.handleMoney();
     }
   }
 }

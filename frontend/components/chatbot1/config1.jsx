@@ -1,10 +1,10 @@
 import { createChatBotMessage } from "react-chatbot-kit";
 
-const config = {
+const config1 = {
   initialMessages: [
     createChatBotMessage(
-      `How much money do you want to donate?`),
+      `Hi, how may I help you today?`),
   ]
 }
 
-export default config;
+export default config1;
