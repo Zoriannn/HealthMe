@@ -120,15 +120,7 @@ function Layout(props) {
                         {isLogin && <UserOutlined
                           style={{ fontSize: "32px", color: "#1B57F0" }}
                           className="pt-1 cursor-pointer"
-                          onClick={()=>{
-                            dispatch(SettingActions.setIsChatbotOpen(true));
-                          }}
-
-                          onDoubleClick={()=>{
-                            dispatch(SettingActions.setIsChatbotOpen(false));
-                            dispatch(SettingActions.setSelected(1))
-                            router.push('/assistant')
-                          }}
+                          
 
                         
                         />}

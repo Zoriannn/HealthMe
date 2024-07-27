@@ -38,7 +38,7 @@ function DonatePage({ data }) {
 
   return (
     <Layout>
-      <div className='flex flex-row h-screen'>
+      <div className='flex flex-row h-5/6'>
         <div className='w-1/3 p-4'>
 
           <Chatbot
@@ -46,6 +46,9 @@ function DonatePage({ data }) {
             messageParser={MessageParser}
             actionProvider={ActionProvider}
           />
+            <div className='w-full'>
+                <Button onClick={() => router.reload()} className='w-full bg-black text-white rounded-lg px-5 py-3 my-5'>Complete & Restart</Button>
+               </div>
 
         </div>
 

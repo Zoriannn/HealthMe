@@ -14,9 +14,7 @@ class ActionProvider1 {
     this.createCustomMessage = createCustomMessage;
   }
 
- 
-
-  handleQuestion(){
+  handleQuestion() {
     this.updateChatbotState(this.createChatBotMessage(
       'Analysing...',
     ));
@@ -28,17 +26,27 @@ Age: 43 & Disabled(verified)`,
       `
 There is a donation available for your case. Please submit your current salary slip.`,
     ));
+  
+  }
+
+  handleQuestion2() {
+    this.updateChatbotState(this.createChatBotMessage(
+      'Analysing...',
+    ));
     this.updateChatbotState(this.createChatBotMessage(
       `
 Analysis Completed!`,
     ));
     this.updateChatbotState(this.createChatBotMessage(
       `
-You are eligible, would you like to proceed. [The contract stated the payment will be directly pay to the hospital]`,
+You are eligible, would you like to proceed. [The contract stated the payment will be directly pay to the hospital]`,  {
+  widget: "Complete",
+}
     ));
   }
 
-  handleEnd(){
+
+  handleEnd() {
     this.updateChatbotState(this.createChatBotMessage(
       'Processing completed',
     ));

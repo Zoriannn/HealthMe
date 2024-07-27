@@ -42,36 +42,36 @@ function DashboardPage({ data }) {
 
   const canvasRef = useRef(null);
 
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    const ctx = canvas.getContext('2d');
-    const image = new Image();
-    image.src = './images/malaysiaMap.png';
+  // useEffect(() => {
+  //   const canvas = canvasRef.current;
+  //   const ctx = canvas.getContext('2d');
+  //   const image = new Image();
+  //   image.src = './images/malaysiaMap.png';
 
-    image.onload = () => {
-      ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
+  //   image.onload = () => {
+  //     ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
 
-      const arrows = [
-        {
-          startX: 210, startY: 340, endX: 210, endY: 340, color: 'red',
-        },
-        {
-          startX: 550, startY: 590, endX: 550, endY: 590, color: 'blue',
-        },
-      ];
+  //     const arrows = [
+  //       {
+  //         startX: 210, startY: 340, endX: 210, endY: 340, color: 'red',
+  //       },
+  //       {
+  //         startX: 550, startY: 590, endX: 550, endY: 590, color: 'blue',
+  //       },
+  //     ];
 
-      arrows.forEach((arrow) => {
-        drawCurvedArrow(
-          ctx,
-          arrow.startX,
-          arrow.startY,
-          arrow.endX,
-          arrow.endY,
-          arrow.color,
-        );
-      });
-    };
-  }, []);
+  //     arrows.forEach((arrow) => {
+  //       drawCurvedArrow(
+  //         ctx,
+  //         arrow.startX,
+  //         arrow.startY,
+  //         arrow.endX,
+  //         arrow.endY,
+  //         arrow.color,
+  //       );
+  //     });
+  //   };
+  // }, []);
 
   const drawCurvedArrow = (ctx, startX, startY, endX, endY, color) => {
     const controlX = (startX + endX) / 2;
@@ -141,7 +141,7 @@ function DashboardPage({ data }) {
     <Layout>
       <div className="text-xl flex flex-col justify-center align-center items-center my-24">
         <div className="w-2/3 my-5 text-lg align-center justify-center items-center flex">
-          Hello {" "} {username}
+          Hello {" "} {username || "Jing Jie"}
           {" "}
           <span className='ml-3'><SmileOutlined style={{ fontSize: '50px' }} /></span>
         </div>
@@ -204,14 +204,7 @@ function DashboardPage({ data }) {
             
           </MapContainer>
         </div>
-        <div className="w-2/3 my-5">
-          <canvas
-            ref={canvasRef}
-            width={800}
-            height={600}
-            style={{ border: '1px solid black' }}
-          />
-        </div>
+    
         <div className="w-2/3 my-5">
           <div className="table-container">
             <table className="w-full bg-gray-100 rounded-md shadow-md">

@@ -9,7 +9,10 @@ class MessageParser1 {
 
     if (lowercase.includes("invoice") || lowercase.includes("hospital")) {
       this.actionProvider.handleQuestion();
-    } else if (lowercase.includes("thanks") || lowercase.includes("thank you")|| lowercase.includes("proceed")) {
+    } 
+    else if (lowercase.includes("salary slip")) {
+      this.actionProvider.handleQuestion2();
+    }else if (lowercase.includes("thanks") || lowercase.includes("thank you")|| lowercase.includes("proceed")) {
       this.actionProvider.handleEnd();
     }
   }

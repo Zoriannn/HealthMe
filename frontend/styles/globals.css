@@ -424,6 +424,7 @@ p.bonus-title {
   align-items: center;
   justify-content: space-between;
   margin-top: 2px;
+  font-size: 20px;
 }
 .ant-upload-span .ant-upload-text-icon,
 .ant-upload-span .ant-upload-list-item-card-actions {
