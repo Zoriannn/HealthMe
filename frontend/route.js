@@ -2,22 +2,19 @@ export const routes = {
   home: {
     to: () => '/',
   },
-  learning: {
-    to: () => '/learning',
+  dashboard: {
+    to: () => '/dashboard',
   },
-  onboarding: {
-    to: () => '/onboarding',
+  login: {
+    to: () => '/login',
   },
-  personality: {
-    to: () => '/personality',
+  register: {
+    to: () => '/register',
   },
-  portfolio: {
-    to: () => '/portfolio',
+  donate: {
+    to: () => '/donate',
   },
-  assistant: {
-    to: () => '/assistant',
-  },
-  forum: {
-    to: () => '/forum',
+  request: {
+    to: () => '/request',
   },
 };
