@@ -39,7 +39,7 @@ class ActionProvider {
   }
 
   handleChangeCriteria() {
-    const message = this.createChatBotMessage('__Would you like to change the criteria of patients to donate to?__');
+    const message = this.createChatBotMessage('Would you like to change the criteria of patients to donate to?');
     this.updateChatbotState(message);
   }
 
