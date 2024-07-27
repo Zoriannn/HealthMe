@@ -13,7 +13,8 @@ class MessageParser {
       this.actionProvider.handleOrphanedChildrenWithCancer();
     } else if (lowercase.includes("50000")){
       this.actionProvider.handleMoney();
-    }
+    }else if (lowercase.includes("ok") || lowercase.includes("proceed"))
+      this.actionProvider.handleLast();
   }
 }
 

@@ -61,6 +61,12 @@ class ActionProvider {
     ));
   }
 
+  handleLast(){
+    this.updateChatbotState(this.createChatBotMessage(
+      `Processing completed`,
+    ));
+  }
+
   updateChatbotState(message) {
     this.setState((prevState) => ({
       ...prevState,
