@@ -28,7 +28,7 @@ Community-Driven Insurance : Where Community Shapes Insurance
 1. Assist those in need:
     - Provide financial assistance to those who cannot afford insurance.
 
-2. Eliminating Manual Verification:
+2. Eliminating Manual Verification:<br />
     desc
 
 3. Increased Trust and Transparency:
