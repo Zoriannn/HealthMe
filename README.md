@@ -1,6 +1,6 @@
 <p align="center">
   <a href="" rel="noopener">
- <img src="images/logo.png" alt="HealthUs"></a>
+ <img src="./logo.png" alt="HealthUs"></a>
 </p>
 <h3 align="center">HealthUs</h3>
 
