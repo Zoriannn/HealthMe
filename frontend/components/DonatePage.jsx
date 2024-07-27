@@ -21,14 +21,14 @@ function DonatePage({ data }) {
   return (
     <Layout>
       <div className='flex flex-row h-screen'>
-        <div className='w-1/2 p-4'>
+        <div className='w-1/3 p-4'>
           <Chatbot
           config={config}
           messageParser={MessageParser}
           actionProvider={ActionProvider}
           />
         </div>
-        <div className='w-1/2 p-4'>
+        <div className='w-2/3 p-4'>
           <img src="./images/smart_contract.png" alt="smart_contract" className="w-full h-fit object-cover" />
         </div>
       </div>

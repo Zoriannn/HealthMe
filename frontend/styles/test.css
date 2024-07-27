@@ -22,8 +22,7 @@
   overflow-y: scroll;
 }
 
-.react-chatbot-kit-chat-bot-message {
-  margin: unset;    
+.react-chatbot-kit-chat-bot-message {  
   width: 80%;
   background: linear-gradient(144deg, rgba(8,207,3,1) 0%, rgba(0,255,205,1) 98%, #7bd759 100%);
   word-wrap: break-word;

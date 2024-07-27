@@ -815,3 +815,7 @@ table {
     background-position: -50% 0;
   }
 }
+
+.react-chatbot-kit-chat-bot-message-container {
+  margin-left: 30px; /* Adjust the value as needed */
+}
