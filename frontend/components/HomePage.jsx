@@ -49,18 +49,16 @@ function HomePage({ data }) {
 
         <div className='mt-20'>
 
-          <div
-            className='bg-red-500 rounded-full p-5 px-10 font-bold text-white cursor-pointer text-2xl'
-            onClick={() => {
-              router.push('/personality');
-              dispatch(SettingActions.setSelected(3));
-            }}
-          >
-            Getting Started
+        <div
+          className='bg-red-500 rounded-full p-5 px-10 font-bold text-white cursor-pointer text-2xl'
+          onClick={() => {
+            router.push('/login'); // Assuming LoginPage is under the pages directory
+            dispatch(SettingActions.setSelected(3));
+          }}
+        >
+          Getting Started →
+        </div>
 
-            →
-
-          </div>
 
         </div>
         <div className='items-center align-center mt-5 font-bold justify-center'>
