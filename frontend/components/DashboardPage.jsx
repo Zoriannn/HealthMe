@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import dynamic from 'next/dynamic';
 import { useRouter } from 'next/router';
 import { useDispatch, useSelector } from 'react-redux';
@@ -9,20 +9,6 @@ import {
 import ProgressBar from '@ramonak/react-progress-bar';
 import Layout from './general/Layout';
 import { SettingActions } from './reducers/settingReducer';
-
-// Fix for default marker icon not showing
-import 'leaflet/dist/leaflet.css';
-import L from 'leaflet';
-import icon from 'leaflet/dist/images/marker-icon.png';
-import iconShadow from 'leaflet/dist/images/marker-shadow.png';
-
-let DefaultIcon = L.icon({
-  iconUrl: icon,
-  shadowUrl: iconShadow,
-  iconAnchor: [12, 41],
-});
-
-L.Marker.prototype.options.icon = DefaultIcon;
 
 // Dynamically import MapContainer, TileLayer, Marker, and Popup from react-leaflet
 const MapContainer = dynamic(() => import('react-leaflet').then((mod) => mod.MapContainer), { ssr: false });
@@ -38,68 +24,21 @@ function DashboardPage({ data }) {
   useEffect(() => {
     dispatch(SettingActions.setLoading(false));
     Aos.init();
+  }, [dispatch]);
+
+  useEffect(() => {
+    // Fix for default marker icon not showing
+    import('leaflet/dist/leaflet.css');
+    import('leaflet').then((L) => {
+      delete L.Icon.Default.prototype._getIconUrl;
+
+      L.Icon.Default.mergeOptions({
+        iconRetinaUrl: require('leaflet/dist/images/marker-icon-2x.png'),
+        iconUrl: require('leaflet/dist/images/marker-icon.png'),
+        shadowUrl: require('leaflet/dist/images/marker-shadow.png'),
+      });
+    });
   }, []);
-
-  const canvasRef = useRef(null);
-
-  // useEffect(() => {
-  //   const canvas = canvasRef.current;
-  //   const ctx = canvas.getContext('2d');
-  //   const image = new Image();
-  //   image.src = './images/malaysiaMap.png';
-
-  //   image.onload = () => {
-  //     ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
-
-  //     const arrows = [
-  //       {
-  //         startX: 210, startY: 340, endX: 210, endY: 340, color: 'red',
-  //       },
-  //       {
-  //         startX: 550, startY: 590, endX: 550, endY: 590, color: 'blue',
-  //       },
-  //     ];
-
-  //     arrows.forEach((arrow) => {
-  //       drawCurvedArrow(
-  //         ctx,
-  //         arrow.startX,
-  //         arrow.startY,
-  //         arrow.endX,
-  //         arrow.endY,
-  //         arrow.color,
-  //       );
-  //     });
-  //   };
-  // }, []);
-
-  const drawCurvedArrow = (ctx, startX, startY, endX, endY, color) => {
-    const controlX = (startX + endX) / 2;
-    const controlY = startY - 50;
-
-    ctx.beginPath();
-    ctx.moveTo(startX, startY);
-    ctx.quadraticCurveTo(controlX, controlY, endX, endY);
-    ctx.strokeStyle = color;
-    ctx.lineWidth = 2;
-    ctx.stroke();
-
-    const headlen = 10;
-    const angle = Math.atan2(endY - controlY, endX - controlX);
-    ctx.beginPath();
-    ctx.moveTo(endX, endY);
-    ctx.lineTo(
-      endX - headlen * Math.cos(angle - Math.PI / 6),
-      endY - headlen * Math.sin(angle - Math.PI / 6),
-    );
-    ctx.lineTo(
-      endX - headlen * Math.cos(angle + Math.PI / 6),
-      endY - headlen * Math.sin(angle + Math.PI / 6),
-    );
-    ctx.lineTo(endX, endY);
-    ctx.fillStyle = color;
-    ctx.fill();
-  };
 
   const tilesInfo = [
     {
@@ -201,10 +140,16 @@ function DashboardPage({ data }) {
               attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
               url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             />
-            
+            {donationLocations.map((location) => (
+              <Marker key={location.id} position={location.position}>
+                <Popup>
+                  <b>{location.name}</b><br />
+                  Donation Amount: {location.amount}
+                </Popup>
+              </Marker>
+            ))}
           </MapContainer>
         </div>
-    
         <div className="w-2/3 my-5">
           <div className="table-container">
             <table className="w-full bg-gray-100 rounded-md shadow-md">
