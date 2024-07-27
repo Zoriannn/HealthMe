@@ -110,6 +110,51 @@ function DashboardPage({ data }) {
           height={600}
           style={{ border: "1px solid black" }}
         />
+
+        <div class="table-container">
+          <table>
+            <caption>Your Donation Transactions</caption>
+            <thead>
+              <tr>
+                <th>Donation Amount</th>
+                <th>Token Amount</th>
+                <th>Date</th>
+                <th>Recipient</th>
+                <th>Donation Type</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>$100</td>
+                <td>100 Tokens</td>
+                <td>2024-07-20</td>
+                <td>Charity A</td>
+                <td>One-Time</td>
+              </tr>
+              <tr>
+                <td>$250</td>
+                <td>250 Tokens</td>
+                <td>2024-07-21</td>
+                <td>Charity B</td>
+                <td>Recurring</td>
+              </tr>
+              <tr>
+                <td>$50</td>
+                <td>50 Tokens</td>
+                <td>2024-07-22</td>
+                <td>Charity C</td>
+                <td>One-Time</td>
+              </tr>
+              <tr>
+                <td>$75</td>
+                <td>75 Tokens</td>
+                <td>2024-07-23</td>
+                <td>Charity A</td>
+                <td>Recurring</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </Layout>
   );
