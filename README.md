@@ -30,7 +30,7 @@ Your Wealth for all. The Help for Everyone.
 **Solution**: By using blockchain, all transactions are recorded immutably, providing complete transparency. Donors can see exactly how their funds are being used, increasing trust and engagement.
 
 ### Inefficiencies in Fund Distribution
-**Problem**: Manual processes for distributing funds can be slow and prone to errors, delaying crucial aid to those in need.
+**Problem**: Manual processes for distributing funds can be slow and prone to errors, delaying crucial aid to those in need.<br>
 **Solution**: Smart contracts automate the distribution of funds, ensuring timely and accurate payments based on predefined criteria.
 
 ### Difficulty in Matching Donors and Recipients
