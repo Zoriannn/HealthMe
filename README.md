@@ -2,7 +2,7 @@
   <a href="" rel="noopener">
  <img src="./logo.png" alt="HealthUs"></a>
 </p>
-<h3 align="center">HealthUs</h3>
+<h1 align="center">HealthMe</h1>
 
 
 ## 📝 Table of Contents
@@ -30,15 +30,15 @@ Your Wealth for all. The Help for Everyone.
 **Solution**: By using blockchain, all transactions are recorded immutably, providing complete transparency. Donors can see exactly how their funds are being used, increasing trust and engagement.
 
 ### Inefficiencies in Fund Distribution
-**Problem**: Manual processes for distributing funds can be slow and prone to errors, delaying crucial aid to those in need.
+**Problem**: Manual processes for distributing funds can be slow and prone to errors, delaying crucial aid to those in need.<br>
 **Solution**: Smart contracts automate the distribution of funds, ensuring timely and accurate payments based on predefined criteria.
 
 ### Difficulty in Matching Donors and Recipients
-**Problem**: Finding the right donors for specific needs can be challenging, resulting in unmet needs and wasted resources.
+**Problem**: Finding the right donors for specific needs can be challenging, resulting in unmet needs and wasted resources.<br>
 **Solution**: AI integration matches receiver requests with available donors, optimizing resource allocation and ensuring needs are met efficiently.
 
 ### Ensuring Accountability and Proper Use of Funds
-**Problem**: There can be concerns about the misuse or misallocation of funds.
+**Problem**: There can be concerns about the misuse or misallocation of funds.<br>
 **Solution**: Smart contracts enforce the terms of funding, releasing funds only when certain conditions are met, ensuring proper use.
 
 ### Encouraging Community Engagement
@@ -64,7 +64,7 @@ Maschain API, Smart Contract, React.js, Firebase, HTML, CSS, JavaScript
 ### Cover Image <a id = "cover_img"></a>
 
 ## 🎉 Acknowledgments <a id = "acknowledgments"></a>
-- GrowthCharger organising committees
-- Maschain, and the teams
-- Sui, and the teams
-- Blockchain for Good, and the teams
+- GrowthCharger organising committee
+- Maschain, and the team
+- Sui, and the team
+- Blockchain for Good, and the team
