@@ -32,6 +32,7 @@ function Layout(props) {
   const isLoading = useSelector((state) => state.setting.loading);
   const isAlert = useSelector((state) => state.setting.alert);
   const isChatbotOpen = useSelector((state) => state.setting.isChatbotOpen);
+  const isLogin = useSelector((state) => state.setting.isLogin);
   const userInputLatest = useSelector((state) => state.setting.userInputLatest);
   const [currentUrl, setCurrentUrl] = useState("");
 
@@ -52,12 +53,8 @@ function Layout(props) {
       key: 0,
       label: "Dashboard",
       action: () => {
-        dispatch(SettingActions.setIsChatbotOpen(false));
         dispatch(SettingActions.setLoading(true));
-        dispatch(SettingActions.setSelected(0));
         router.push("/dashboard");
-        dispatch(SettingActions.setSelected(0));
-        dispatch(SettingActions.setIsChatbotOpen(false));
       },
     },
     {
@@ -65,8 +62,6 @@ function Layout(props) {
       label: "Donate",
       action: () => {
         dispatch(SettingActions.setLoading(true));
-        dispatch(SettingActions.setSelected(1));
-        dispatch(SettingActions.setIsChatbotOpen(false));
         router.push("/donate");
       },
     },
@@ -74,11 +69,8 @@ function Layout(props) {
       key: 2,
       label: "Request",
       action: () => {
-        dispatch(SettingActions.setIsChatbotOpen(false));
         dispatch(SettingActions.setLoading(true));
-        dispatch(SettingActions.setSelected(2));
         router.push("/request");
-        dispatch(SettingActions.setIsChatbotOpen(false));
       },
     },
   ];
@@ -122,9 +114,10 @@ function Layout(props) {
                         <MenuSection menuRow={middleMenu} />
                       </div>
 
+                 
                       <div className="col-span-5 col-start-8 md:col-span-10 flex items-center align-center ">
                         <div className="flex items-center justify-end md:justify-between w-full">
-                        <UserOutlined
+                        {isLogin && <UserOutlined
                           style={{ fontSize: "32px", color: "#1B57F0" }}
                           className="pt-1 cursor-pointer"
                           onClick={()=>{
@@ -138,7 +131,8 @@ function Layout(props) {
                           }}
 
                         
-                        />
+                        />}
+
                         </div>
                       </div>
                     </div>

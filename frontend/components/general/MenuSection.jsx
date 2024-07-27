@@ -7,15 +7,19 @@ function MenuSection({menuRow}) {
   const router = useRouter();
   const dispatch = useDispatch();
   const activeSelected = useSelector((state) => state.setting.selected);
+  const isLogin = useSelector((state) => state.setting.isLogin);
 
 
   return (
     <div className='menu-responsive hidden md:flex justify-center align-center items-center flex '>
       {menuRow.map((i, index) => {
         const isActive = activeSelected === i.key;
+        const isDisabled = !isLogin;
+
+        console.log(isDisabled)
         return (
           <div
-            className={`cursor-pointer ${i.label == "Personality"? isActive ? 'bg-red-500 text-white p-2 rounded-2xl ' : 'border border-2 border-red-500 text-white p-2 rounded-2xl ': isActive ? ' px-5 bg-blue-500 hover:bg-gray-200 text-white p-2 rounded-2xl ' : ' px-5'}`}
+            className={`${!isDisabled ? 'cursor-pointer' : 'pointer-events-none cursor-not-allowed'} ${i.label == "Personality"? isActive ? 'bg-red-500 text-white p-2 rounded-2xl ' : 'border border-2 border-red-500 text-white p-2 rounded-2xl ': isActive ? ' px-5 bg-blue-500 hover:bg-gray-200 text-white p-2 rounded-2xl ' : ' px-5'}`}
             key={i.key}
             style={{color: i.label == "Personality"? isActive ? 'white' : 'black' : 'black'}}
             onClick={(e) => {!isActive && i.action()}}

@@ -67,7 +67,7 @@ function LoginPage({ data }) {
           </button>
         </div>
         {activeTab === "signup" && (
-          <div className="border border-gray-300 p-8 shadow-lg w-fit max-w-sm rounded-t-3xl">
+          <div className="border border-gray-300 p-8 shadow-lg w-1/2 rounded-t-3xl">
             <div className="mb-4 flex align-center justify-center items-center flex-col">
               <img
                 src="./images/logoCircle.png"
@@ -215,20 +215,7 @@ function LoginPage({ data }) {
                   placeholder="Enter your password"
                 />
               </div>
-              <div className="mb-4">
-                <label
-                  htmlFor="confirm-password"
-                  className="block text-gray-700"
-                >
-                  Confirm Password:
-                </label>
-                <input
-                  type="password"
-                  id="confirm-password"
-                  className="w-full px-3 py-2 border border-gray-300 rounded"
-                  placeholder="Confirm your password"
-                />
-              </div>
+            
               <button
                 type="button" // Change to 'button' to prevent form submission
                 className="w-full bg-red-500 text-white py-2 px-4 rounded font-bold"
