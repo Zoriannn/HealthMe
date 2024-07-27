@@ -14,9 +14,13 @@ import '../styles/grid.css';
 import 'antd/es/message/style/index.css';
 import 'antd/es/badge/style/index.css';
 import '../styles/StrengthMeter.css';
+import '../styles/TrendingStockTab.css';
+//import styles from "../../styles/chatbot.module.css";
+import 'react-chatbot-kit/build/main.css';
 import '../styles/test.css'
 import Link from 'next/link';
 import Head from 'next/head';
+//import 'react-svg-radar-chart/build/css/index.css'
 import '../styles/Forum.css';
 
 function MyApp({ Component, pageProps }) {
