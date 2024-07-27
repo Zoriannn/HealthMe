@@ -34,11 +34,11 @@ Your Wealth for all. The Help for Everyone.
 **Solution**: Smart contracts automate the distribution of funds, ensuring timely and accurate payments based on predefined criteria.
 
 ### Difficulty in Matching Donors and Recipients
-**Problem**: Finding the right donors for specific needs can be challenging, resulting in unmet needs and wasted resources.
+**Problem**: Finding the right donors for specific needs can be challenging, resulting in unmet needs and wasted resources.<br>
 **Solution**: AI integration matches receiver requests with available donors, optimizing resource allocation and ensuring needs are met efficiently.
 
 ### Ensuring Accountability and Proper Use of Funds
-**Problem**: There can be concerns about the misuse or misallocation of funds.
+**Problem**: There can be concerns about the misuse or misallocation of funds.<br>
 **Solution**: Smart contracts enforce the terms of funding, releasing funds only when certain conditions are met, ensuring proper use.
 
 ### Encouraging Community Engagement
@@ -64,7 +64,7 @@ Maschain API, Smart Contract, React.js, Firebase, HTML, CSS, JavaScript
 ### Cover Image <a id = "cover_img"></a>
 
 ## 🎉 Acknowledgments <a id = "acknowledgments"></a>
-- GrowthCharger organising committees
-- Maschain, and the teams
-- Sui, and the teams
-- Blockchain for Good, and the teams
+- GrowthCharger organising committee
+- Maschain, and the team
+- Sui, and the team
+- Blockchain for Good, and the team
