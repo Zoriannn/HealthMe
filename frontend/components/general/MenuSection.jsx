@@ -19,7 +19,7 @@ function MenuSection({menuRow}) {
         console.log(isDisabled)
         return (
           <div
-            className={`${!isDisabled ? 'cursor-pointer' : 'pointer-events-none cursor-not-allowed'} ${i.label == "Personality"? isActive ? 'bg-red-500 text-white p-2 rounded-2xl ' : 'border border-2 border-red-500 text-white p-2 rounded-2xl ': isActive ? ' px-5 bg-blue-500 hover:bg-gray-200 text-white p-2 rounded-2xl ' : ' px-5'}`}
+            className={`${!isDisabled ? 'cursor-pointer' : ' cursor-not-allowed'} ${i.label == "Personality"? isActive ? 'bg-red-500 text-white p-2 rounded-2xl ' : 'border border-2 border-red-500 text-white p-2 rounded-2xl ': isActive ? ' px-5 bg-blue-500 hover:bg-gray-200 text-white p-2 rounded-2xl ' : ' px-5'}`}
             key={i.key}
             style={{color: i.label == "Personality"? isActive ? 'white' : 'black' : 'black'}}
             onClick={(e) => {!isActive && i.action()}}
