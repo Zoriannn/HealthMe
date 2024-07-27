@@ -2,12 +2,12 @@
 import React from 'react';
 import _ from 'lodash';
 
-import ForumPage from '../components/ForumPage';
+import HomePage from '../components/HomePage';
 
-function Forum() {
+function Home() {
   return (
-    <ForumPage />
+    <HomePage />
   );
 }
 
-export default Forum;
+export default Home;

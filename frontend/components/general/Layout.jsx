@@ -50,52 +50,38 @@ function Layout(props) {
   const middleMenu = [
     {
       key: 0,
-      label: "Learning",
+      label: "Dashboard",
       action: () => {
         dispatch(SettingActions.setIsChatbotOpen(false));
         dispatch(SettingActions.setLoading(true));
         dispatch(SettingActions.setSelected(0));
-        router.push("/learning");
+        router.push("/dashboard");
         dispatch(SettingActions.setSelected(0));
         dispatch(SettingActions.setIsChatbotOpen(false));
       },
     },
     {
       key: 1,
-      label: "Trading",
+      label: "Donate",
       action: () => {
         dispatch(SettingActions.setLoading(true));
         dispatch(SettingActions.setSelected(1));
         dispatch(SettingActions.setIsChatbotOpen(false));
-        router.push("/assistant");
+        router.push("/donate");
       },
     },
     {
       key: 2,
-      label: "Forum",
+      label: "Request",
       action: () => {
         dispatch(SettingActions.setIsChatbotOpen(false));
         dispatch(SettingActions.setLoading(true));
         dispatch(SettingActions.setSelected(2));
-        router.push("/forum");
+        router.push("/request");
         dispatch(SettingActions.setIsChatbotOpen(false));
       },
     },
   ];
-
-  const personality = [
-    {
-      key: 3,
-      label: "Personality",
-      action: () => {
-        dispatch(SettingActions.setIsChatbotOpen(false));
-        dispatch(SettingActions.setLoading(true));
-        dispatch(SettingActions.setSelected(3));
-        router.push("/personality");
-      },
-    },
-  ];
-
 
   return (
     <>
@@ -103,19 +89,19 @@ function Layout(props) {
         <div className="">
           <div className="">
             <div className="relative bg-custom h-screen overflow-hidden text-black">
-              <div className="col-span-10">
+              <div className="">
                 <div
                   id="page-container"
-                  className="col-span-10 h-screen overflow-y-auto hidden-scrollbar"
+                  className=" h-screen overflow-y-auto hidden-scrollbar"
                 >
                   <div className="">
                     <div
                       id="pageHeader"
-                      className="col-span-6 z-50 md:col-span-2 bg-white pb-1 pt-3 px-5 flex justify-between align-center shadow-xl shadow shadow-gray-200"
+                      className=" z-50 bg-white pb-1 pt-3 px-5 flex justify-between align-center shadow-xl shadow shadow-gray-200"
                     >
                       <div className="flex justify-between gap-3">
                         {" "}
-                        <span className="md:-mt-1 main-menu-logo ml-0.5 cursor-pointer">
+                        <span className="md:-mt-1 ml-0.5 w-[50px] h-[50px] cursor-pointer">
                           <img
                             alt="EvestAI Logo"
                             onClick={() => {
@@ -125,12 +111,19 @@ function Layout(props) {
                               dispatch(SettingActions.setSelected(null));
                               dispatch(SettingActions.setLoading(false));
                             }}
-                            src="/images/logo.png"
+                            src="/images/logoCircle.png"
                           />
                         </span>
-                        <div className="border-l-2 border-black my-2 border-gray-200">
-                          {" "}
-                        </div>
+                 
+                       
+                      </div>
+
+                      <div className="flex items-center align-center">
+                        <MenuSection menuRow={middleMenu} />
+                      </div>
+
+                      <div className="col-span-5 col-start-8 md:col-span-10 flex items-center align-center ">
+                        <div className="flex items-center justify-end md:justify-between w-full">
                         <UserOutlined
                           style={{ fontSize: "32px", color: "#1B57F0" }}
                           className="pt-1 cursor-pointer"
@@ -146,32 +139,6 @@ function Layout(props) {
 
                         
                         />
-                      </div>
-
-                      <div className="flex items-center align-center">
-                        <MenuSection menuRow={middleMenu} />
-                      </div>
-
-                      <div className="col-span-5 col-start-8 md:col-span-10 flex items-center align-center ">
-                        <div className="flex items-center justify-end md:justify-between w-full">
-                          <div className="w-full md:w-auto">
-                            <div className="flex justify-end gap-3 items-center flex-wrap">
-                              <MenuSection menuRow={personality} />
-
-                              <AndroidFilled
-                                className="bg-evestai rounded-2xl p-2"
-                                style={{ fontSize: "32px", color: "#1B57F0" }}
-                               
-                              />
-
-                              <div
-                                className="font-bold text-xl"
-                              
-                              >
-                                Chatbot
-                              </div>
-                            </div>
-                          </div>
                         </div>
                       </div>
                     </div>
