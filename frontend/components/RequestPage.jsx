@@ -12,6 +12,28 @@ import Dragger from 'antd/lib/upload/Dragger';
 import { UploadOutlined } from '@ant-design/icons';
 import { Button, Form } from 'antd';
 import { useFetcher } from 'react-router-dom';
+import axios from "axios";
+import CryptoJS from "crypto-js";
+
+const postApi = () => {
+  return axios
+    .request({
+      method: "POST",
+      url: "https://service-testnet.maschain.com/api/wallet/entity",
+      headers: {
+        "Content-Type": "application/json",
+        client_id:
+          "0264a6a2135d0b766d212db38a1a0fcd2334c651acb32b69098c2fb0c6c98db9",
+        client_secret:
+          "sk_59bb96279047f2365169a00b7ced5e4d39f5ed5e7da417b3d5c1d849dd697318",
+      },
+      data: {
+        name: "HealthMe Entity",
+      },
+    })
+    .then((response) => console.log(response))
+    .catch((error) => false);
+};
 
 function RequestPage({ data }) {
   const router = useRouter();
