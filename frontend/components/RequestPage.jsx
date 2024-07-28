@@ -13,7 +13,6 @@ import { UploadOutlined } from '@ant-design/icons';
 import { Button, Form } from 'antd';
 import { useFetcher } from 'react-router-dom';
 import axios from "axios";
-import CryptoJS from "crypto-js";
 
 const postApi = () => {
   return axios

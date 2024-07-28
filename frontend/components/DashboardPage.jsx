@@ -12,12 +12,18 @@ import {
 import ProgressBar from "@ramonak/react-progress-bar";
 import Layout from "./general/Layout";
 import { SettingActions } from "./reducers/settingReducer";
-import { icon } from "leaflet";
 
-const ICON = icon({
-  iconUrl: "/images/marker-icon.png",
-  iconSize: [32, 32],
-});
+// Define Leaflet ICON outside the component
+const ICON = dynamic(() => {
+  if (typeof window !== 'undefined') {
+    const { icon } = require("leaflet");
+    return icon({
+      iconUrl: "/images/marker-icon.png",
+      iconSize: [32, 32],
+    });
+  }
+  return null;
+}, { ssr: false });
 
 import axios from "axios";
 
