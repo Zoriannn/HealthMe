@@ -58,8 +58,7 @@ Maschain API, Smart Contract, React.js, Firebase, HTML, CSS, JavaScript
 
 ### Hosting & Contract Link <a id = "link"></a>
 - The frontend website: 
-  [Main](),
-  [Backup]()
+  [Main](https://healthme-funds.web.app)
 
 ### Cover Image <a id = "cover_img"></a>
 
