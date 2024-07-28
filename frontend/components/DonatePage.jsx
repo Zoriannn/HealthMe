@@ -30,7 +30,7 @@ function DonatePage({ data }) {
 
   const handleCopyClick = async () => {
     try {
-      await navigator.clipboard.writeText("Orphaned children with cancer");
+      await navigator.clipboard.writeText("Orphaned children with blindness");
     } catch (err) {
       console.log(err)
     }
@@ -92,7 +92,7 @@ function DonatePage({ data }) {
             </div>
             <p>
               The domain for this donation is specifically for individuals with
-              <strong>brain-related issues ("Domain")</strong>
+              <strong> brain-related issues ("Domain")</strong>
             </p>
 
             <div
@@ -102,8 +102,8 @@ function DonatePage({ data }) {
                 setTimeout(() => {
                   setDownInfo([
                     '<18',
-                    'Cancer (All Types)',
-                    '0 (No Family Members)',
+                    'Blindness',
+                    '0 (Orphan)',
                   ]);
                   dispatch(SettingActions.setLoading(false));
                 }, 500);
@@ -123,12 +123,12 @@ function DonatePage({ data }) {
               <li>
                 <strong>Disability:</strong>
                 {' '}
-                <span className={`${downInfo[1] === 'Cancer (All Types)' ? 'font-bold' : ''}`}>{downInfo[1]}</span>
+                <span className={`${downInfo[1] === 'Blindness' ? 'font-bold' : ''}`}>{downInfo[1]}</span>
               </li>
               <li>
                 <strong>Family Members:</strong>
                 {' '}
-                <span className={`${downInfo[2] === '0 (No Family Members)' ? 'font-bold' : ''}`}>
+                <span className={`${downInfo[2] === '0 (Orphan)' ? 'font-bold' : ''}`}>
                   {' '}
                   {downInfo[2]}
                 </span>
