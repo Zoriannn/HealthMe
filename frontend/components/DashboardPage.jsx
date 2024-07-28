@@ -19,6 +19,25 @@ const ICON = icon({
   iconSize: [32, 32],
 });
 
+import axios from "axios";
+
+const getApi = () => {
+  return axios
+    .request({
+      method: "get",
+      url: "https://service-testnet.maschain.com/api/wallet/wallet?type=1",
+      headers: {
+        "Content-Type": "application/json",
+        client_id:
+          "0264a6a2135d0b766d212db38a1a0fcd2334c651acb32b69098c2fb0c6c98db9",
+        client_secret:
+          "sk_59bb96279047f2365169a00b7ced5e4d39f5ed5e7da417b3d5c1d849dd697318",
+      },
+    })
+    .then((response) => console.log(response))
+    .catch((error) => false);
+};
+
 // Dynamically import MapContainer, TileLayer, Marker, and Popup from react-leaflet
 const MapContainer = dynamic(
   () => import("react-leaflet").then((mod) => mod.MapContainer),
@@ -43,6 +62,7 @@ function DashboardPage({ data }) {
   const [donatedAmount, setDonatedAmount] = useState(50000);
 
   useEffect(() => {
+    getApi();
     dispatch(SettingActions.setLoading(false));
     Aos.init();
   }, [dispatch]);

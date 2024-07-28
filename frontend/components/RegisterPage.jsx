@@ -19,6 +19,24 @@ import Layout from './general/Layout';
 import { SettingActions } from './reducers/settingReducer';
 import { logoIcon } from '../images';
 import { routes } from '../route';
+import axios from "axios";
+
+const getApi = () => {
+  return axios
+    .request({
+      method: "get",
+      url: "https://service-testnet.maschain.com/api/wallet/wallet?type=1",
+      headers: {
+        "Content-Type": "application/json",
+        client_id:
+          "0264a6a2135d0b766d212db38a1a0fcd2334c651acb32b69098c2fb0c6c98db9",
+        client_secret:
+          "sk_59bb96279047f2365169a00b7ced5e4d39f5ed5e7da417b3d5c1d849dd697318",
+      },
+    })
+    .then((response) => console.log(response))
+    .catch((error) => false);
+};
 function RegisterPage({ data }) {
   const router = useRouter();
   const dispatch = useDispatch();
@@ -26,6 +44,7 @@ function RegisterPage({ data }) {
   useEffect(() => {
     dispatch(SettingActions.setLoading(false));
     Aos.init();
+    getApi();
   }, []);
 
   return (
