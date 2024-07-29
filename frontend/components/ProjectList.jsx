@@ -31,7 +31,6 @@ const getApi = () =>
         .catch((error) => false);
     
 
-
 const healthProjects = [
   {
     title: "Emergency Surgery for John Doe",
@@ -50,6 +49,7 @@ const healthProjects = [
       "Our blood donation campaign aims to collect 500 units of blood to be used in local hospitals. The campaign will run for a month and includes several donation drives across the city. Your support helps save lives.",
     buttonText: "Contribute Now",
     image: "images/project2.jpeg",
+    received: 200,
   },
   {
     title: "Cancer Treatment for Jane Smith",
@@ -59,6 +59,8 @@ const healthProjects = [
       "Jane Smith, a 42-year-old woman, has been fighting cancer for two years. She needs ongoing chemotherapy and radiotherapy sessions, which are costly. The total amount required is $50,000. Your generosity can give her a fighting chance.",
     buttonText: "Support Now",
     image: "images/project3.png",
+    received: 15000,
+    goal: 50000,
   },
   {
     title: "Medical Supplies for Rural Clinic",
@@ -68,6 +70,8 @@ const healthProjects = [
       "The rural clinic in question serves a community of over 10,000 people, many of whom lack access to basic healthcare. The clinic needs medical supplies, including medicines, bandages, and diagnostic tools, totaling $15,000. Your donation can improve healthcare access.",
     buttonText: "Donate Now",
     image: "images/project4.png",
+    received: 7000,
+    goal: 15000,
   },
   {
     title: "Child Vaccination Program",
@@ -77,6 +81,7 @@ const healthProjects = [
       "Our program aims to vaccinate 2,000 children against common preventable diseases. Vaccinations are crucial for the health and well-being of these children, and the total cost for the program is $20,000. Every donation helps us reach more children.",
     buttonText: "Give Now",
     image: "images/project5.jpeg",
+    received: 8000,
   },
   {
     title: "Mental Health Support Group",
@@ -86,6 +91,8 @@ const healthProjects = [
       "The support group provides counseling and therapy sessions for individuals dealing with mental health issues such as depression and anxiety. We need $10,000 to cover the costs of professional counselors and therapy materials. Your support can make a huge impact.",
     buttonText: "Support Now",
     image: "images/project6.jpeg",
+    received: 3000,
+    goal: 10000,
   },
 ];
 
@@ -111,7 +118,6 @@ function ProjectList({ data }) {
       return newShowDetails;
     });
   };
-
   return (
     <Layout>
       <div className="text-xl flex flex-col justify-center align-center items-center my-24">
@@ -126,6 +132,17 @@ function ProjectList({ data }) {
                 />
                 <div className="project-title">{project.title}</div>
                 <p>{project.description}</p>
+                <div className="progress-bar-container">
+                  <div
+                    className="progress-bar"
+                    style={{
+                      width: `${(project.received / project.goal) * 100}%`,
+                    }}
+                  ></div>
+                </div>
+                <p className="progress-text">
+                  ${project.received} raised of ${project.goal} goal
+                </p>
                 <div className="button-group">
                   <button
                     className="details-button"
