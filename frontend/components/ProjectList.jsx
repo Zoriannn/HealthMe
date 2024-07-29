@@ -40,6 +40,8 @@ const healthProjects = [
       "John Doe, a 35-year-old father of two, has been diagnosed with a severe heart condition that requires immediate surgery. The estimated cost of the surgery is $25,000. Any contribution can make a significant difference.",
     buttonText: "Donate Now",
     image: "images/project 1.png",
+    received: 5000,
+    goal: 25000,
   },
   {
     title: "Blood Donation Campaign",
@@ -50,6 +52,7 @@ const healthProjects = [
     buttonText: "Contribute Now",
     image: "images/project2.jpeg",
     received: 200,
+    goal: 500,
   },
   {
     title: "Cancer Treatment for Jane Smith",
@@ -82,6 +85,7 @@ const healthProjects = [
     buttonText: "Give Now",
     image: "images/project5.jpeg",
     received: 8000,
+    goal: 20000,
   },
   {
     title: "Mental Health Support Group",
