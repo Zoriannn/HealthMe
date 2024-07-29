@@ -1,71 +1,57 @@
-import React, { useEffect, useState } from "react";
-import dynamic from "next/dynamic";
-import { useRouter } from "next/router";
-import { useDispatch, useSelector } from "react-redux";
-import Aos from "aos";
+import React, { useEffect, useState } from 'react';
+import dynamic from 'next/dynamic';
+import { useRouter } from 'next/router';
+import { useDispatch, useSelector } from 'react-redux';
+import Aos from 'aos';
 import {
   DollarOutlined,
   UserOutlined,
   TrophyOutlined,
   SmileOutlined,
-} from "@ant-design/icons";
-import ProgressBar from "@ramonak/react-progress-bar";
-import Layout from "./general/Layout";
-import { SettingActions } from "./reducers/settingReducer";
-
-// Define Leaflet ICON outside the component
-const ICON = dynamic(() => {
-  if (typeof window !== 'undefined') {
-    const { icon } = require("leaflet");
-    return icon({
-      iconUrl: "/images/marker-icon.png",
-      iconSize: [32, 32],
-    });
-  }
-  return null;
-}, { ssr: false });
-
-import axios from "axios";
-
-const getApi = () => {
-  return axios
-    .request({
-      method: "get",
-      url: "https://service-testnet.maschain.com/api/wallet/wallet?type=1",
-      headers: {
-        "Content-Type": "application/json",
-        client_id:
-          "0264a6a2135d0b766d212db38a1a0fcd2334c651acb32b69098c2fb0c6c98db9",
-        client_secret:
-          "sk_59bb96279047f2365169a00b7ced5e4d39f5ed5e7da417b3d5c1d849dd697318",
-      },
-    })
-    .then((response) => console.log(response))
-    .catch((error) => false);
-};
+} from '@ant-design/icons';
+import ProgressBar from '@ramonak/react-progress-bar';
+import axios from 'axios';
+import Layout from './general/Layout';
+import { SettingActions } from './reducers/settingReducer';
 
 // Dynamically import MapContainer, TileLayer, Marker, and Popup from react-leaflet
 const MapContainer = dynamic(
-  () => import("react-leaflet").then((mod) => mod.MapContainer),
-  { ssr: false }
+  () => import('react-leaflet').then((mod) => mod.MapContainer),
+  { ssr: false },
 );
 const TileLayer = dynamic(
-  () => import("react-leaflet").then((mod) => mod.TileLayer),
-  { ssr: false }
+  () => import('react-leaflet').then((mod) => mod.TileLayer),
+  { ssr: false },
 );
 const Marker = dynamic(
-  () => import("react-leaflet").then((mod) => mod.Marker),
-  { ssr: false }
+  () => import('react-leaflet').then((mod) => mod.Marker),
+  { ssr: false },
 );
-const Popup = dynamic(() => import("react-leaflet").then((mod) => mod.Popup), {
+const Popup = dynamic(() => import('react-leaflet').then((mod) => mod.Popup), {
   ssr: false,
 });
+
+const getApi = () => axios
+  .request({
+    method: 'get',
+    url: 'https://service-testnet.maschain.com/api/wallet/wallet?type=1',
+    headers: {
+      'Content-Type': 'application/json',
+      client_id:
+          '0264a6a2135d0b766d212db38a1a0fcd2334c651acb32b69098c2fb0c6c98db9',
+      client_secret:
+          'sk_59bb96279047f2365169a00b7ced5e4d39f5ed5e7da417b3d5c1d849dd697318',
+    },
+  })
+  .then((response) => console.log(response))
+  .catch((error) => false);
 
 function DashboardPage({ data }) {
   const router = useRouter();
   const dispatch = useDispatch();
   const username = useSelector((state) => state.setting.username);
   const [donatedAmount, setDonatedAmount] = useState(50000);
+  const [L, setL] = useState(null);
 
   useEffect(() => {
     getApi();
@@ -74,215 +60,237 @@ function DashboardPage({ data }) {
   }, [dispatch]);
 
   useEffect(() => {
-    // Fix for default marker icon not showing
-    import("leaflet/dist/leaflet.css");
-    import("leaflet").then((L) => {
-      delete L.Icon.Default.prototype._getIconUrl;
+    if (typeof window !== 'undefined') {
+      // Import Leaflet dynamically and set the state
+      import('leaflet').then((leaflet) => {
+        delete leaflet.Icon.Default.prototype._getIconUrl;
 
-      L.Icon.Default.mergeOptions({
-        iconRetinaUrl: require("leaflet/dist/images/marker-icon-2x.png"),
-        iconUrl: require("leaflet/dist/images/marker-icon.png"),
-        shadowUrl: require("leaflet/dist/images/marker-shadow.png"),
+        leaflet.Icon.Default.mergeOptions({
+          iconRetinaUrl: require('leaflet/dist/images/marker-icon-2x.png'),
+          iconUrl: require('leaflet/dist/images/marker-icon.png'),
+          shadowUrl: require('leaflet/dist/images/marker-shadow.png'),
+        });
+
+        setL(leaflet);
       });
-    });
+
+      // Import Leaflet CSS
+      require('leaflet/dist/leaflet.css');
+    }
   }, []);
 
   const tilesInfo = [
     {
-      label: "Donated Amount",
+      label: 'Donated Amount',
       amount: donatedAmount,
       antdIcon: (
-        <DollarOutlined style={{ fontSize: "40px", color: "orange" }} />
+        <DollarOutlined style={{ fontSize: '40px', color: 'orange' }} />
       ),
     },
     {
-      label: "People Helped",
-      amount: "152",
-      antdIcon: <UserOutlined style={{ fontSize: "40px", color: "blue" }} />,
+      label: 'People Helped',
+      amount: '152',
+      antdIcon: <UserOutlined style={{ fontSize: '40px', color: 'blue' }} />,
     },
     {
-      label: "Leadership Ranking",
-      amount: "5th",
-      antdIcon: <TrophyOutlined style={{ fontSize: "40px", color: "green" }} />,
+      label: 'Leadership Ranking',
+      amount: '5th',
+      antdIcon: <TrophyOutlined style={{ fontSize: '40px', color: 'green' }} />,
     },
   ];
 
   const notifications = [
     {
-      message: "Your donation to Charity A has been processed",
-      date: "2024-07-20",
+      message: 'Your donation to Charity A has been processed',
+      date: '2024-07-20',
     },
     {
-      message: "Your donation to Charity A has been processed",
-      date: "2024-07-19",
+      message: 'Your donation to Charity A has been processed',
+      date: '2024-07-19',
     },
     {
-      message: "New leaderboard update: You are now ranked 5th",
-      date: "2024-07-18",
+      message: 'New leaderboard update: You are now ranked 5th',
+      date: '2024-07-18',
     },
   ];
 
   const recentActivities = [
-    { activity: "Cashed in RM200", date: "2024-07-22" },
-    { activity: "Cashed in RM500", date: "2024-07-23" },
-    { activity: "Cashed in RM100", date: "2024-07-21" },
+    { activity: 'Cashed in RM200', date: '2024-07-22' },
+    { activity: 'Cashed in RM500', date: '2024-07-23' },
+    { activity: 'Cashed in RM100', date: '2024-07-21' },
   ];
 
   const donationLocations = [
-    { id: 1, name: "Charity A", position: [3.139, 101.6869], amount: "$100" }, // Kuala Lumpur, Malaysia
-    { id: 2, name: "Charity B", position: [1.3521, 103.8198], amount: "$250" }, // Singapore
-    { id: 3, name: "Charity C", position: [13.7563, 100.5018], amount: "$50" }, // Bangkok, Thailand
+    {
+      id: 1, name: 'Charity A', position: [3.139, 101.6869], amount: '$100',
+    }, // Kuala Lumpur, Malaysia
+    {
+      id: 2, name: 'Charity B', position: [1.3521, 103.8198], amount: '$250',
+    }, // Singapore
+    {
+      id: 3, name: 'Charity C', position: [13.7563, 100.5018], amount: '$50',
+    }, // Bangkok, Thailand
   ];
 
   return (
     <Layout>
-      <div className="text-xl flex flex-col justify-center align-center items-center my-24">
-        <div className="w-2/3 my-5 text-lg align-center justify-center items-center flex">
-          Hello {username || "Jing Jie"}{" "}
-          <span className="ml-3">
-            <SmileOutlined style={{ fontSize: "50px" }} />
+      <div className='text-xl flex flex-col justify-center align-center items-center my-24'>
+        <div className='w-2/3 my-5 text-lg align-center justify-center items-center flex'>
+          Hello
+          {' '}
+          {username || 'Jing Jie'}
+          {' '}
+          <span className='ml-3'>
+            <SmileOutlined style={{ fontSize: '50px' }} />
           </span>
         </div>
-        <div className="w-2/3 my-5">
-          <div className="grid grid-cols-3 gap-6">
+        <div className='w-2/3 my-5'>
+          <div className='grid grid-cols-3 gap-6'>
             {tilesInfo.map((i, index) => (
               <div
                 key={index}
-                className="bg-gray-100 shadow-md rounded-md p-4 flex flex-col items-center hover:bg-gray-200 transition duration-200 ease-in-out transform hover:scale-105"
+                className='bg-gray-100 shadow-md rounded-md p-4 flex flex-col items-center hover:bg-gray-200 transition duration-200 ease-in-out transform hover:scale-105'
                 onClick={() => {
                   setDonatedAmount(donatedAmount + 50000);
                 }}
               >
-                <div className="mb-2 text-center">{i.antdIcon}</div>
-                <div className="text-[25px] text-center ">{i.label}</div>
-                <div className="font-bold text-2xl text-center">{i.amount}</div>
+                <div className='mb-2 text-center'>{i.antdIcon}</div>
+                <div className='text-[25px] text-center '>{i.label}</div>
+                <div className='font-bold text-2xl text-center'>{i.amount}</div>
               </div>
             ))}
           </div>
         </div>
-        <div className="w-2/3 my-5">
-          <h2 className="text-lg font-bold mb-3">Donation Pool</h2>
+        <div className='w-2/3 my-5'>
+          <h2 className='text-lg font-bold mb-3'>Donation Pool</h2>
           <ProgressBar
-            className="w-full"
+            className='w-full'
             completed={60}
             animateOnRender
-            bgColor="#4caf50"
-            baseBgColor="#e0e0e0"
-            height="30px"
-            labelColor="#fff"
+            bgColor='#4caf50'
+            baseBgColor='#e0e0e0'
+            height='30px'
+            labelColor='#fff'
           />
-          <div className="flex justify-between mt-2">
+          <div className='flex justify-between mt-2'>
             <span
-              className="pl-1 text-black font-bold"
-              style={{ fontSize: "15px" }}
+              className='pl-1 text-black font-bold'
+              style={{ fontSize: '15px' }}
             >
               0
             </span>
             <span
-              className="pl-1 text-black font-bold"
-              style={{ fontSize: "15px" }}
+              className='pl-1 text-black font-bold'
+              style={{ fontSize: '15px' }}
             >
               60,000 $HeMe
             </span>
           </div>
         </div>
-        <div className="w-2/3 my-5 bg-gray-100 p-5 shadow-md rounded-md hover:bg-gray-200 transition duration-200 ease-in-out">
-          <h2 className="text-lg font-bold mb-3">Notifications</h2>
-          <div className="flex flex-col space-y-2">
+        <div className='w-2/3 my-5 bg-gray-100 p-5 shadow-md rounded-md hover:bg-gray-200 transition duration-200 ease-in-out'>
+          <h2 className='text-lg font-bold mb-3'>Notifications</h2>
+          <div className='flex flex-col space-y-2'>
             {notifications.map((notification, index) => (
               <div
                 key={index}
-                className="flex justify-between items-center bg-white p-2 rounded-md shadow-sm hover:bg-gray-100 transition duration-200 ease-in-out"
+                className='flex justify-between items-center bg-white p-2 rounded-md shadow-sm hover:bg-gray-100 transition duration-200 ease-in-out'
               >
                 <div>{notification.message}</div>
-                <div className="text-sm text-gray-500">{notification.date}</div>
+                <div className='text-sm text-gray-500'>{notification.date}</div>
               </div>
             ))}
           </div>
         </div>
-        <div className="w-2/3 my-5 bg-gray-100 p-5 shadow-md rounded-md hover:bg-gray-200 transition duration-200 ease-in-out">
-          <h2 className="text-lg font-bold mb-3">Recent Activities</h2>
-          <div className="flex flex-col space-y-2">
+        <div className='w-2/3 my-5 bg-gray-100 p-5 shadow-md rounded-md hover:bg-gray-200 transition duration-200 ease-in-out'>
+          <h2 className='text-lg font-bold mb-3'>Recent Activities</h2>
+          <div className='flex flex-col space-y-2'>
             {recentActivities.map((activity, index) => (
               <div
                 key={index}
-                className="flex justify-between items-center bg-white p-2 rounded-md shadow-sm hover:bg-gray-100 transition duration-200 ease-in-out"
+                className='flex justify-between items-center bg-white p-2 rounded-md shadow-sm hover:bg-gray-100 transition duration-200 ease-in-out'
               >
                 <div>{activity.activity}</div>
-                <div className="text-sm text-gray-500">{activity.date}</div>
+                <div className='text-sm text-gray-500'>{activity.date}</div>
               </div>
             ))}
           </div>
         </div>
-        <div className="w-2/3 my-5">
-          <MapContainer
-            center={[3.139, 101.6869]}
-            zoom={5}
-            scrollWheelZoom={false}
-            style={{ height: "500px", width: "100%" }}
-          >
-            <TileLayer
-              attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-              url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-            />
-            {donationLocations.map((location) => (
-              <Marker
-                key={location.id}
-                position={location.position}
-                icon={ICON}
-              >
-                <Popup>
-                  <b>{location.name}</b>
-                  <br />
-                  Donation Amount: {location.amount}
-                </Popup>
-              </Marker>
-            ))}
-          </MapContainer>
+        <div className='w-2/3 my-5'>
+          {L && (
+            <MapContainer
+              center={[3.139, 101.6869]}
+              zoom={5}
+              scrollWheelZoom={false}
+              style={{ height: '500px', width: '100%' }}
+            >
+              <TileLayer
+                attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                url='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
+              />
+              {donationLocations.map((location) => (
+                <Marker
+                  key={location.id}
+                  position={location.position}
+                  icon={L.icon({
+                    iconUrl: '/images/marker-icon.png',
+                    iconSize: [32, 32],
+                  })}
+                >
+                  <Popup>
+                    <b>{location.name}</b>
+                    <br />
+                    Donation Amount:
+                    {' '}
+                    {location.amount}
+                  </Popup>
+                </Marker>
+              ))}
+            </MapContainer>
+          )}
         </div>
-        <div className="w-2/3 my-5">
-          <div className="table-container">
-            <table className="w-full bg-gray-100 rounded-md shadow-md">
-              <caption className="font-bold text-lg mb-3">
+        <div className='w-2/3 my-5'>
+          <div className='table-container'>
+            <table className='w-full bg-gray-100 rounded-md shadow-md'>
+              <caption className='font-bold text-lg mb-3'>
                 Your Donation Transactions
               </caption>
               <thead>
-                <tr className="bg-gray-200 hover:bg-gray-300 transition duration-200 ease-in-out">
-                  <th className="p-2">Donation Amount</th>
-                  <th className="p-2">Token Amount</th>
-                  <th className="p-2">Date</th>
-                  <th className="p-2">Recipient</th>
-                  <th className="p-2">Donation Type</th>
+                <tr className='bg-gray-200 hover:bg-gray-300 transition duration-200 ease-in-out'>
+                  <th className='p-2'>Donation Amount</th>
+                  <th className='p-2'>Token Amount</th>
+                  <th className='p-2'>Date</th>
+                  <th className='p-2'>Recipient</th>
+                  <th className='p-2'>Donation Type</th>
                 </tr>
               </thead>
               <tbody>
-                <tr className="hover:bg-gray-200 transition duration-200 ease-in-out">
-                  <td className="p-2">$100</td>
-                  <td className="p-2">100 Tokens</td>
-                  <td className="p-2">2024-07-20</td>
-                  <td className="p-2">Charity A</td>
-                  <td className="p-2">One-Time</td>
+                <tr className='hover:bg-gray-200 transition duration-200 ease-in-out'>
+                  <td className='p-2'>$100</td>
+                  <td className='p-2'>100 Tokens</td>
+                  <td className='p-2'>2024-07-20</td>
+                  <td className='p-2'>Charity A</td>
+                  <td className='p-2'>One-Time</td>
                 </tr>
-                <tr className="hover:bg-gray-200 transition duration-200 ease-in-out">
-                  <td className="p-2">$250</td>
-                  <td className="p-2">250 Tokens</td>
-                  <td className="p-2">2024-07-21</td>
-                  <td className="p-2">Charity B</td>
-                  <td className="p-2">Recurring</td>
+                <tr className='hover:bg-gray-200 transition duration-200 ease-in-out'>
+                  <td className='p-2'>$250</td>
+                  <td className='p-2'>250 Tokens</td>
+                  <td className='p-2'>2024-07-21</td>
+                  <td className='p-2'>Charity B</td>
+                  <td className='p-2'>Recurring</td>
                 </tr>
-                <tr className="hover:bg-gray-200 transition duration-200 ease-in-out">
-                  <td className="p-2">$50</td>
-                  <td className="p-2">50 Tokens</td>
-                  <td className="p-2">2024-07-22</td>
-                  <td className="p-2">Charity C</td>
-                  <td className="p-2">One-Time</td>
+                <tr className='hover:bg-gray-200 transition duration-200 ease-in-out'>
+                  <td className='p-2'>$50</td>
+                  <td className='p-2'>50 Tokens</td>
+                  <td className='p-2'>2024-07-22</td>
+                  <td className='p-2'>Charity C</td>
+                  <td className='p-2'>One-Time</td>
                 </tr>
-                <tr className="hover:bg-gray-200 transition duration-200 ease-in-out">
-                  <td className="p-2">$75</td>
-                  <td className="p-2">75 Tokens</td>
-                  <td className="p-2">2024-07-23</td>
-                  <td className="p-2">Charity A</td>
-                  <td className="p-2">Recurring</td>
+                <tr className='hover:bg-gray-200 transition duration-200 ease-in-out'>
+                  <td className='p-2'>$75</td>
+                  <td className='p-2'>75 Tokens</td>
+                  <td className='p-2'>2024-07-23</td>
+                  <td className='p-2'>Charity A</td>
+                  <td className='p-2'>Recurring</td>
                 </tr>
               </tbody>
             </table>
