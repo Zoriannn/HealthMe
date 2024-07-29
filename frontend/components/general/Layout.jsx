@@ -73,6 +73,14 @@ function Layout(props) {
         router.push("/request");
       },
     },
+    {
+      key: 3,
+      label: "Request List",
+      action: () => {
+        dispatch(SettingActions.setLoading(true));
+        router.push("/requestlist");
+      },
+    },
   ];
 
   return (
