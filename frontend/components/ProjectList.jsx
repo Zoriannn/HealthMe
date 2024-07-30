@@ -34,9 +34,9 @@ const healthProjects = [
   {
     title: "Emergency Surgery for John Doe",
     description:
-      "John Doe requires an urgent surgery for a life-threatening condition. Your donation can save his life.",
+      "John Doe requires an urgent surgery for a life-threatening condition.",
     details:
-      "John Doe, a 35-year-old father of two, has been diagnosed with a severe heart condition that requires immediate surgery. The estimated cost of the surgery is $25,000. Any contribution can make a significant difference.",
+      "John Doe, a 35-year-old father of two, has been diagnosed with a severe heart condition that requires immediate surgery. The estimated cost of the surgery is RM25,000. Any contribution can make a significant difference.",
     buttonText: "Donate Now",
     image: "images/project 1.png",
     received: 5000,
@@ -58,7 +58,7 @@ const healthProjects = [
     description:
       "Jane Smith is battling cancer and needs funds for her ongoing treatment. Your help is crucial.",
     details:
-      "Jane Smith, a 42-year-old woman, has been fighting cancer for two years. She needs ongoing chemotherapy and radiotherapy sessions, which are costly. The total amount required is $50,000. Your generosity can give her a fighting chance.",
+      "Jane Smith, a 42-year-old woman, has been fighting cancer for two years. She needs ongoing chemotherapy and radiotherapy sessions, which are costly. The total amount required is RM50,000. Your generosity can give her a fighting chance.",
     buttonText: "Support Now",
     image: "images/project3.png",
     received: 15000,
@@ -69,7 +69,7 @@ const healthProjects = [
     description:
       "Help us provide essential medical supplies to a rural clinic serving an underprivileged community.",
     details:
-      "The rural clinic in question serves a community of over 10,000 people, many of whom lack access to basic healthcare. The clinic needs medical supplies, including medicines, bandages, and diagnostic tools, totaling $15,000. Your donation can improve healthcare access.",
+      "The rural clinic in question serves a community of over 10,000 people, many of whom lack access to basic healthcare. The clinic needs medical supplies, including medicines, bandages, and diagnostic tools, totaling RM15,000. Your donation can improve healthcare access.",
     buttonText: "Donate Now",
     image: "images/project4.png",
     received: 7000,
@@ -80,7 +80,7 @@ const healthProjects = [
     description:
       "Fund our child vaccination program to protect children from preventable diseases.",
     details:
-      "Our program aims to vaccinate 2,000 children against common preventable diseases. Vaccinations are crucial for the health and well-being of these children, and the total cost for the program is $20,000. Every donation helps us reach more children.",
+      "Our program aims to vaccinate 2,000 children against common preventable diseases. Vaccinations are crucial for the health and well-being of these children, and the total cost for the program is RM20,000. Every donation helps us reach more children.",
     buttonText: "Give Now",
     image: "images/project5.jpeg",
     received: 8000,
@@ -91,7 +91,7 @@ const healthProjects = [
     description:
       "Support our mental health support group for individuals struggling with mental health issues.",
     details:
-      "The support group provides counseling and therapy sessions for individuals dealing with mental health issues such as depression and anxiety. We need $10,000 to cover the costs of professional counselors and therapy materials. Your support can make a huge impact.",
+      "The support group provides counseling and therapy sessions for individuals dealing with mental health issues such as depression and anxiety. We need RM10,000 to cover the costs of professional counselors and therapy materials. Your support can make a huge impact.",
     buttonText: "Support Now",
     image: "images/project6.jpeg",
     received: 3000,
@@ -144,7 +144,7 @@ function ProjectList({ data }) {
                   ></div>
                 </div>
                 <p className="progress-text">
-                  ${project.received} raised of ${project.goal} goal
+                RM{project.received} raised of RM{project.goal} goal
                 </p>
                 <div className="button-group">
                   <button
@@ -153,7 +153,7 @@ function ProjectList({ data }) {
                   >
                     {showDetails[index] ? "Hide Details" : "Details"}
                   </button>
-                  <button className="signup-button">
+                  <button onClick={() => router.push("/donate-now")} className="signup-button">
                     {project.buttonText}
                   </button>
                 </div>

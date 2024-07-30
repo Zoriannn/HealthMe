@@ -17,6 +17,9 @@ export const routes = {
   donate: {
     to: () => '/donate',
   },
+  donateNow: {
+    to: () => '/donate-now',
+  },
   request: {
     to: () => '/request',
   },
