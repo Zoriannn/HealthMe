@@ -43,10 +43,10 @@ class ActionProvider {
   
   handleOrphanedChildrenWithBlindness() {
     const messages = [
-      'Your list has been updated as below:',
-      '- Domain: Blindness (All)',
-      '- Age: <18',
-      '- Family Members: 0'
+      'Your list has been updated as shown on the right panel.',
+      'If you need any changes, please feel free to let me know',
+      ,
+     
     ];
   
     messages.forEach((message) => {
@@ -55,6 +55,7 @@ class ActionProvider {
         this.updateChatbotState(this.createChatBotMessage(message));
       }, randomDelay);
     });
+
   }
 
 
