@@ -48,24 +48,7 @@ const Popup = dynamic(() => import("react-leaflet").then((mod) => mod.Popup), {
 });
 
 
-const serviceID = "service_1lavbjn";
-const templateID = "template_yknhe8j";
 
-const params = {
-};
-
-function sendEmail(){
-
-  
-  console.log("Sending email")
-
-  emailjs.init("HaSTkYVTVmCvMEyXQ");
-
-
-  emailjs.send("service_1lavbjn","template_yknhe8j")
-  .then(() => alert("Thank you. The request is successfully sent."))
-  .catch(err => console.error('Failed to send email:', err));
-}
 const getTransactionApi = () =>
   axios
     .request({
@@ -391,7 +374,6 @@ function DashboardPage({ data }) {
             <h1 className='ml-14 text-3xl font-bold text-gray-800 animate-bounce'>
               Welcome to HealthMe, {username || 'Jason'}
             </h1>
-            <Button onClick={sendEmail}>Hello</Button>
             <p  className='mt-2 ml-14 text-xl text-gray-800'>
               Your Wealth For All. The Help For Everyone
             </p>
