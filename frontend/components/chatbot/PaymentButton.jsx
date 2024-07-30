@@ -32,11 +32,26 @@ const PaymentButton = (props) => {
     }, 2000);
   };
 
+  function sendEmail(){
+
+  
+    console.log("Sending email")
+  
+    emailjs.init("nEOa7brxpEkuoZvpM");
+  
+  
+    emailjs.send("service_dfxu0dm","template_r29dk04")
+    .then(() => alert("Thank you. The request is successfully sent."))
+    .catch(err => console.error('Failed to send email:', err));
+  }
+
   const handleSubmit = (event) => {
     event.preventDefault();
     // Mock payment processing
+    sendEmail();
     dispatch(SettingActions.setLoading(true));
     setTimeout(() => {
+
       dispatch(SettingActions.setLoading(false));
       setPaymentSuccess(true);
       closeModal();
