@@ -1,3 +1,6 @@
+import React from "react";
+import PaymentButton from "./PaymentButton";
+
 class ActionProvider {
   constructor(
     createChatBotMessage,
@@ -14,28 +17,20 @@ class ActionProvider {
     this.createCustomMessage = createCustomMessage;
   }
 
- 
-
-  handleMoney(){
-    this.updateChatbotState(this.createChatBotMessage(
+  handleMoney() {
+    const messages = [
       'By default, your sum of money will be distributed to patients who match the criteria below:',
-    ));
-    this.updateChatbotState(this.createChatBotMessage(
-      `
-- Domain: All`,
-    ));
-    this.updateChatbotState(this.createChatBotMessage(
-      `
-- Age: All`,
-    ));
-    this.updateChatbotState(this.createChatBotMessage(
-      `
-- Family Members: All`,
-    ));
-    this.updateChatbotState(this.createChatBotMessage(
-      `
-      Would you like to change the criteria of patients to donate to?`,
-    ));
+      '- Domain: All',
+      '- Age: All',
+      '- Family Members: All',
+      'Would you like to change the criteria of patients to donate to?'
+    ];
+
+    messages.forEach((message, index) => {
+      setTimeout(() => {
+        this.updateChatbotState(this.createChatBotMessage(message));
+      }, index * 1500);
+    });
   }
 
   handleChangeCriteria() {
@@ -43,29 +38,39 @@ class ActionProvider {
     this.updateChatbotState(message);
   }
 
-  handleOrphanedChildrenWithCancer(){
-    this.updateChatbotState(this.createChatBotMessage(
+  handleOrphanedChildrenWithBlindness() {
+    const messages = [
       'Your list has been updated as below:',
-    ));
-    this.updateChatbotState(this.createChatBotMessage(
-      `
-- Domain: Cancer (All)`,
-    ));
-    this.updateChatbotState(this.createChatBotMessage(
-      `
-- Age: <18`,
-    ));
-    this.updateChatbotState(this.createChatBotMessage(
-      `
-- Family Members:0`,
-    ));
+      '- Domain: Blindness (All)',
+      '- Age: <18',
+      '- Family Members: 0'
+    ];
+
+    messages.forEach((message, index) => {
+      setTimeout(() => {
+        this.updateChatbotState(this.createChatBotMessage(message));
+      }, index * 1500);
+    });
+
+    // Add the button message after the previous messages
+    setTimeout(() => {
+      const paymentButtonMessage = this.createChatBotMessage(
+        "",
+        {
+          widget: "paymentButton"
+        }
+      );
+      this.updateChatbotState(paymentButtonMessage);
+    }, messages.length * 1500);
   }
 
-  handleLast(){
-    this.updateChatbotState(this.createChatBotMessage(
-      `Processing completed`,
-    ));
+  handleLast() {
+    this.updateChatbotState(this.createChatBotMessage(`Processing completed`));
   }
+
+  handleProceedToPayment = () => {
+    this.updateChatbotState(this.createChatBotMessage(`Proceeding to payment...`));
+  };
 
   updateChatbotState(message) {
     this.setState((prevState) => ({
