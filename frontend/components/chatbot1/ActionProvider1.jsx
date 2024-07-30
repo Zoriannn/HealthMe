@@ -1,3 +1,5 @@
+import emailjs from "emailjs-com"
+
 class ActionProvider1 {
   constructor(
     createChatBotMessage,
@@ -15,35 +17,53 @@ class ActionProvider1 {
   }
 
   handleQuestion() {
-    this.updateChatbotState(this.createChatBotMessage(
+    const messages = [
       'Analysing...',
-    ));
-    this.updateChatbotState(this.createChatBotMessage(
       `
-Age: 43 & Disabled(verified)`,
-    ));
-    this.updateChatbotState(this.createChatBotMessage(
+    Age: 43 & Disabled(verified)`,
       `
-There is a donation available for your case. Please submit your current salary slip.`,
-    ));
+    There is a donation available for your case. Please submit your current salary slip.`,
+    ];
   
+    const delays = [500, 900, 1400];
+  
+    messages.forEach((message, index) => {
+      setTimeout(() => {
+        this.updateChatbotState(this.createChatBotMessage(message));
+      }, delays[index]);
+    });
+
+    
   }
+  
+  
 
   handleQuestion2() {
-    this.updateChatbotState(this.createChatBotMessage(
-      'Analysing...',
-    ));
-    this.updateChatbotState(this.createChatBotMessage(
-      `
-Analysis Completed!`,
-    ));
-    this.updateChatbotState(this.createChatBotMessage(
-      `
-You are eligible, would you like to proceed. [The contract stated the payment will be directly pay to the hospital]`,  {
-  widget: "Complete",
-}
-    ));
+    const messages = [
+      { text: 'Analysing...', options: {} },
+      { text: '\nAnalysis Completed!', options: {} },
+      { text: '\nYou are eligible, would you like to proceed. [The contract stated the payment will be directly paid to the hospital]', options: { widget: "Complete" } },
+      { text: '\nYou are verified as B40. You are eligible, would you like to proceed. [The contract stated the payment will be directly paid to the hospital]', options: { widget: "Complete" } },
+      { text: '\nThe donation details have been sent to all parties involved!', options: {} },
+    ];
+  
+    const delays = [500, 900, 1400]; 
+  
+    messages.forEach((message, index) => {
+      setTimeout(() => {
+        this.updateChatbotState(this.createChatBotMessage(message.text, message.options));
+      }, delays[index]);
+    });
+
+    emailjs.init("nEOa7brxpEkuoZvpM");
+  
+  
+    emailjs.send("service_dfxu0dm","template_v81ybnd")
+    .then(() => console.log("Done"))
+    .catch(err => console.error('Failed to send email:', err));
   }
+  
+  
 
 
   handleEnd() {

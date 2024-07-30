@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { useDispatch } from 'react-redux';
 import Aos from 'aos';
@@ -39,6 +39,8 @@ const putWalletApi = () => {
 function RequestPage({ data }) {
   const router = useRouter();
   const dispatch = useDispatch();
+  const [showImage1, setShowImage1] = useState(false);
+  const [showImage2, setShowImage2] = useState(false);
 
   useEffect(() => {
     dispatch(SettingActions.setLoading(false));
@@ -52,10 +54,13 @@ function RequestPage({ data }) {
     // accept: 'image/jpg, .pdf',
     async onChange(e) {
 if(e.fileList.length >1){
+
   await navigator.clipboard.writeText("I have uploaded my salary slip.");
+  setShowImage1(true)
 }
 else{
   await navigator.clipboard.writeText("Here, I have uploaded the invoice.");
+  setShowImage2(true)
 }
       
     },
@@ -105,6 +110,13 @@ else{
                    </div> */}
                  </div>
                </Dragger>
+
+               <div className='flex gap-4'>
+                {showImage1 &&  <img src="/images/image2.jpeg" className="w-1/4" alt=""/>}
+                {showImage2 &&  <img src="/images/image1.jpeg" className="w-1/4" alt=""/>}
+
+               
+               </div>
 
               
         </div>

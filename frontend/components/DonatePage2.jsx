@@ -7,8 +7,8 @@ import { Button } from 'antd';
 import Layout from './general/Layout';
 import { SettingActions } from './reducers/settingReducer';
 import config from './chatbot/config';
-import MessageParser from './chatbot/MessageParser';
-import ActionProvider from './chatbot/ActionProvider';
+import MessageParser from './chatbot2/MessageParser2';
+import ActionProvider from './chatbot2/ActionProvider2';
 import axios from "axios";
 
 const putWalletApi = () => {
@@ -33,7 +33,7 @@ const putWalletApi = () => {
     .catch((error) => false);
 };
 
-function DonatePage({ data }) {
+function DonatePage2({ data }) {
   const router = useRouter();
   const dispatch = useDispatch();
   const [smartContract, setSmartContract] = useState(null);
@@ -199,4 +199,4 @@ function DonatePage({ data }) {
   );
 }
 
-export default DonatePage;
+export default DonatePage2;
