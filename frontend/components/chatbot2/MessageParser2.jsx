@@ -6,8 +6,9 @@ class MessageParser1 {
 
   parse(message) {
     const lowercase = message.toLowerCase();
-
-    if (lowercase.includes("invoice") || lowercase.includes("hospital")) {
+    if (lowercase.includes("no")) {
+      this.actionProvider.handlePayment();
+    }else if (lowercase.includes("invoice") || lowercase.includes("hospital")) {
       this.actionProvider.handleQuestion();
     } 
     else if (lowercase.includes("salary slip")) {

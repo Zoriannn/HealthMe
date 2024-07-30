@@ -6,7 +6,7 @@ import Chatbot from 'react-chatbot-kit';
 import { Button } from 'antd';
 import Layout from './general/Layout';
 import { SettingActions } from './reducers/settingReducer';
-import config from './chatbot/config';
+import config from './chatbot2/config2';
 import MessageParser from './chatbot2/MessageParser2';
 import ActionProvider from './chatbot2/ActionProvider2';
 import axios from "axios";

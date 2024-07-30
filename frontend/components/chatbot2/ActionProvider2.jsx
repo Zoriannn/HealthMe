@@ -1,3 +1,6 @@
+import React from "react";
+import PaymentButton2 from "./PaymentButton2";
+
 class ActionProvider1 {
   constructor(
     createChatBotMessage,
@@ -49,6 +52,15 @@ You are eligible, would you like to proceed. [The contract stated the payment wi
   handleEnd() {
     this.updateChatbotState(this.createChatBotMessage(
       'Processing completed',
+    ));
+  }
+
+  handlePayment = () => {
+    this.updateChatbotState(this.createChatBotMessage(
+      'Press the button below to proceed with payment.',
+      {
+        widget: "paymentButton",
+      }
     ));
   }
 

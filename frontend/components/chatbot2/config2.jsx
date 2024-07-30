@@ -1,7 +1,7 @@
 import { createChatBotMessage } from "react-chatbot-kit";
 import PaymentButton2 from "./PaymentButton2";
 
-const config1 = {
+const config2 = {
   botName: "HealthMe",
   initialMessages: [
     createChatBotMessage(
@@ -9,9 +9,10 @@ const config1 = {
     createChatBotMessage(
       `I noticed that you want to make a donation to John Doe.`),
     createChatBotMessage(
-      `I have updated your Donation Contract to match the medical condition of John Doe and similar patients.`),
+      `The total amount is RM 25,000.00, with RM 5,000.00 already donated. By default, the system will allocate the remaining RM 20,000.00 for donation.`),
     createChatBotMessage(
-      `Click the button below to proceed to payment`),
+      `Anything you want to change?`),
+      
   ],
   widgets: [
     {
@@ -21,4 +22,4 @@ const config1 = {
   ],
 }
 
-export default config1;
+export default config2;
