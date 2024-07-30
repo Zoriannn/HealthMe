@@ -55,6 +55,18 @@ class ActionProvider {
       }, randomDelay);
     });
 
+     const totalDelay = messages.length * 1500;
+     setTimeout(() => {
+       this.updateChatbotState(
+         this.createChatBotMessage(
+           "Once confirmed, you may proceed with the payment",
+           {
+             widget: "paymentButton",
+           }
+         )
+       );
+     }, totalDelay);
+
   }
 
 
