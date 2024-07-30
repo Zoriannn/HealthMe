@@ -14,11 +14,11 @@ import axios from "axios";
 import Layout from "./general/Layout";
 import { SettingActions } from "./reducers/settingReducer";
 
-const getApi = () =>
+const getAuditApi = () =>
   axios
     .request({
       method: "get",
-      url: "https://service-testnet.maschain.com/api/wallet/wallet?type=1",
+      url: "https://service-testnet.maschain.com/api/audit/get-audit-transaction?wallet_address=0xdA383c9CaCa3dbfCbF8535fFB9B8E8F3eD9CD70c&contract_address=0xD43a487e7977B0D7B30A707A4402174AA98a5228&filter=from",
       headers: {
         "Content-Type": "application/json",
         client_id:
@@ -28,8 +28,7 @@ const getApi = () =>
       },
     })
     .then((response) => console.log(response))
-        .catch((error) => false);
-    
+    .catch((error) => false);
 
 const healthProjects = [
   {
@@ -107,7 +106,7 @@ function ProjectList({ data }) {
   const [donatedAmount, setDonatedAmount] = useState(50000);
 
   useEffect(() => {
-    getApi();
+    //getAuditApi();
     dispatch(SettingActions.setLoading(false));
     Aos.init();
   }, [dispatch]);

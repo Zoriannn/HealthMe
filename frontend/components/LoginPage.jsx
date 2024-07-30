@@ -22,11 +22,12 @@ import { logoIcon } from "../images";
 import { routes } from "../route";
 import axios from "axios";
 
-const postApi = () => {
+const postCreateWalletApi = () => {
+  var uniqueID = crypto.randomUUID();
   return axios
     .request({
       method: "POST",
-      url: "https://service-testnet.maschain.com/api/wallet/entity",
+      url: "https://service-testnet.maschain.com/api/wallet/create-user",
       headers: {
         "Content-Type": "application/json",
         client_id:
@@ -35,7 +36,11 @@ const postApi = () => {
           "sk_59bb96279047f2365169a00b7ced5e4d39f5ed5e7da417b3d5c1d849dd697318",
       },
       data: {
-        name: "HealthMe Entity",
+        name: "HealthMe User " + uniqueID,
+        email: uniqueID + "@healthme.com",
+        ic: "HealthMe ic",
+        phone: "HealthMe ic",
+        entity_id: 12,
       },
     })
     .then((response) => console.log(response))
@@ -51,7 +56,7 @@ function LoginPage({ data }) {
   useEffect(() => {
     dispatch(SettingActions.setLoading(false));
     Aos.init();
-    postApi();
+    //postCreateWalletApi();
   }, []);
 
   useEffect(() => {
