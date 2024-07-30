@@ -14,11 +14,12 @@ import { Button, Form } from 'antd';
 import { useFetcher } from 'react-router-dom';
 import axios from "axios";
 
-const postApi = () => {
+const putWalletApi = () => {
+  var uniqueID = crypto.randomUUID();
   return axios
     .request({
-      method: "POST",
-      url: "https://service-testnet.maschain.com/api/wallet/entity",
+      method: "PUT",
+      url: "https://service-testnet.maschain.com/api/wallet/entity/17",
       headers: {
         "Content-Type": "application/json",
         client_id:
@@ -27,7 +28,8 @@ const postApi = () => {
           "sk_59bb96279047f2365169a00b7ced5e4d39f5ed5e7da417b3d5c1d849dd697318",
       },
       data: {
-        name: "HealthMe Entity",
+        name: "HealthMe " + uniqueID,
+        external_id: null,
       },
     })
     .then((response) => console.log(response))
@@ -41,6 +43,7 @@ function RequestPage({ data }) {
   useEffect(() => {
     dispatch(SettingActions.setLoading(false));
     Aos.init();
+    //putWalletApi();
   }, []);
 
   const verifyUploadProps = {

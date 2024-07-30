@@ -21,11 +21,11 @@ import { logoIcon } from '../images';
 import { routes } from '../route';
 import axios from "axios";
 
-const getApi = () => {
+const getWalletApi = () => {
   return axios
     .request({
       method: "get",
-      url: "https://service-testnet.maschain.com/api/wallet/wallet?type=1",
+      url: "https://service-testnet.maschain.com/api/wallet/wallet?type=2",
       headers: {
         "Content-Type": "application/json",
         client_id:
@@ -44,7 +44,7 @@ function RegisterPage({ data }) {
   useEffect(() => {
     dispatch(SettingActions.setLoading(false));
     Aos.init();
-    getApi();
+    //getWalletApi();
   }, []);
 
   return (

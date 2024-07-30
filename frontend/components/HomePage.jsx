@@ -21,11 +21,11 @@ import { logoIcon } from '../images';
 import { routes } from '../route';
 import axios from "axios";
 
-const getApi = () => {
+const getAuditTransactionApi = () => {
   return axios
     .request({
       method: "get",
-      url: "https://service-testnet.maschain.com/api/wallet/wallet?type=1",
+      url: "https://service-testnet.maschain.com/api/audit/get-audit-transaction?wallet_address=0xdA383c9CaCa3dbfCbF8535fFB9B8E8F3eD9CD70c&contract_address=0xD43a487e7977B0D7B30A707A4402174AA98a5228&filter=from",
       headers: {
         "Content-Type": "application/json",
         client_id:
@@ -44,7 +44,7 @@ function HomePage({ data }) {
   useEffect(() => {
     dispatch(SettingActions.setLoading(false));
     Aos.init();
-    getApi();
+    //getAuditTransactionApi();
   }, []);
 
   return (

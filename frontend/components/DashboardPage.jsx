@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react';
-import dynamic from 'next/dynamic';
-import { useRouter } from 'next/router';
-import { useDispatch, useSelector } from 'react-redux';
-import Aos from 'aos';
+import React, { useEffect, useState } from "react";
+import dynamic from "next/dynamic";
+import { useRouter } from "next/router";
+import { useDispatch, useSelector } from "react-redux";
+import Aos from "aos";
 import {
   DollarOutlined,
   UserOutlined,
@@ -31,35 +31,36 @@ const Donut = dynamic(() => import('@ant-design/charts').then((mod) => mod.Donut
 
 // Dynamically import MapContainer, TileLayer, Marker, and Popup from react-leaflet
 const MapContainer = dynamic(
-  () => import('react-leaflet').then((mod) => mod.MapContainer),
-  { ssr: false },
+  () => import("react-leaflet").then((mod) => mod.MapContainer),
+  { ssr: false }
 );
 const TileLayer = dynamic(
-  () => import('react-leaflet').then((mod) => mod.TileLayer),
-  { ssr: false },
+  () => import("react-leaflet").then((mod) => mod.TileLayer),
+  { ssr: false }
 );
 const Marker = dynamic(
-  () => import('react-leaflet').then((mod) => mod.Marker),
-  { ssr: false },
+  () => import("react-leaflet").then((mod) => mod.Marker),
+  { ssr: false }
 );
-const Popup = dynamic(() => import('react-leaflet').then((mod) => mod.Popup), {
+const Popup = dynamic(() => import("react-leaflet").then((mod) => mod.Popup), {
   ssr: false,
 });
 
-const getApi = () => axios
-  .request({
-    method: 'get',
-    url: 'https://service-testnet.maschain.com/api/wallet/wallet?type=1',
-    headers: {
-      'Content-Type': 'application/json',
-      client_id:
-          '0264a6a2135d0b766d212db38a1a0fcd2334c651acb32b69098c2fb0c6c98db9',
-      client_secret:
-          'sk_59bb96279047f2365169a00b7ced5e4d39f5ed5e7da417b3d5c1d849dd697318',
-    },
-  })
-  .then((response) => console.log(response))
-  .catch((error) => false);
+const getTransactionApi = () =>
+  axios
+    .request({
+      method: "get",
+      url: "https://service-testnet.maschain.com/api/token/get-token-transaction?wallet_address=0xdA383c9CaCa3dbfCbF8535fFB9B8E8F3eD9CD70c&contract_address=0x03B8a1a8eF80AeD20d8dF9f1A18dE8150BD49C83&filter=from",
+      headers: {
+        "Content-Type": "application/json",
+        client_id:
+          "0264a6a2135d0b766d212db38a1a0fcd2334c651acb32b69098c2fb0c6c98db9",
+        client_secret:
+          "sk_59bb96279047f2365169a00b7ced5e4d39f5ed5e7da417b3d5c1d849dd697318",
+      },
+    })
+    .then((response) => console.log(response))
+    .catch((error) => false);
 
 function DashboardPage({ data }) {
   const router = useRouter();
@@ -77,28 +78,28 @@ function DashboardPage({ data }) {
   const [showWalletAddress, setShowWalletAddress] = useState(false); // State to toggle the column
 
   useEffect(() => {
-    getApi();
+    //getTransactionApi();
     dispatch(SettingActions.setLoading(false));
     Aos.init();
   }, [dispatch]);
 
   useEffect(() => {
-    if (typeof window !== 'undefined') {
+    if (typeof window !== "undefined") {
       // Import Leaflet dynamically and set the state
-      import('leaflet').then((leaflet) => {
+      import("leaflet").then((leaflet) => {
         delete leaflet.Icon.Default.prototype._getIconUrl;
 
         leaflet.Icon.Default.mergeOptions({
-          iconRetinaUrl: require('leaflet/dist/images/marker-icon-2x.png'),
-          iconUrl: require('leaflet/dist/images/marker-icon.png'),
-          shadowUrl: require('leaflet/dist/images/marker-shadow.png'),
+          iconRetinaUrl: require("leaflet/dist/images/marker-icon-2x.png"),
+          iconUrl: require("leaflet/dist/images/marker-icon.png"),
+          shadowUrl: require("leaflet/dist/images/marker-shadow.png"),
         });
 
         setL(leaflet);
       });
 
       // Import Leaflet CSS
-      require('leaflet/dist/leaflet.css');
+      require("leaflet/dist/leaflet.css");
     }
   }, []);
 
@@ -134,10 +135,10 @@ function DashboardPage({ data }) {
 
   const tilesInfo = [
     {
-      label: 'Donated Amount',
+      label: "Donated Amount",
       amount: donatedAmount,
       antdIcon: (
-        <DollarOutlined style={{ fontSize: '40px', color: 'orange' }} />
+        <DollarOutlined style={{ fontSize: "40px", color: "orange" }} />
       ),
     },
     {
@@ -146,9 +147,19 @@ function DashboardPage({ data }) {
       antdIcon: <UserOutlined style={{ fontSize: '40px', color: 'blue' }} />,
     },
     {
-      label: 'Leadership Ranking',
-      amount: '5th',
-      antdIcon: <TrophyOutlined style={{ fontSize: '40px', color: 'green' }} />,
+      label: "Leadership Ranking",
+      amount: "5th",
+      antdIcon: <TrophyOutlined style={{ fontSize: "40px", color: "green" }} />,
+    },
+    {
+      label: 'Funds Raised',
+      amount: '$500,000',
+      antdIcon: <FundOutlined style={{ fontSize: '40px', color: 'purple' }} />,
+    },
+    {
+      label: 'Donation Growth',
+      amount: '15%',
+      antdIcon: <RiseOutlined style={{ fontSize: '40px', color: 'red' }} />,
     },
     {
       label: 'Funds Raised',
@@ -178,9 +189,9 @@ function DashboardPage({ data }) {
   ];
 
   const recentActivities = [
-    { activity: 'Cashed in RM200', date: '2024-07-22' },
-    { activity: 'Cashed in RM500', date: '2024-07-23' },
-    { activity: 'Cashed in RM100', date: '2024-07-21' },
+    { activity: "Cashed in RM200", date: "2024-07-22" },
+    { activity: "Cashed in RM500", date: "2024-07-23" },
+    { activity: "Cashed in RM100", date: "2024-07-21" },
   ];
 
   const donationLocations = [
