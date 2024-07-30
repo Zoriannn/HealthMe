@@ -102,71 +102,7 @@ function DonatePage2({ data }) {
               </li>
             </ul>
 
-            <div
-              className='text-2xl font-bold mt-8'
-              onClick={() => {
-                dispatch(SettingActions.setLoading(true));
-                setTimeout(() => {
-                  setAmountUserKeyIn(50000);
-                  dispatch(SettingActions.setLoading(false));
-                  handleCopyClick()
-                }, 500);
-              }}
-            >
-              Domain
-            </div>
-            <p>
-              The domain for this donation is specifically for individuals with
-{' '}
-              {amountUserKeyIn !== 0 ? <strong> brain-related issues ("Domain")</strong> : '-'}
-             
-            </p>
-
-            <div
-              className='text-2xl font-bold mt-8'
-              onClick={() => {
-                dispatch(SettingActions.setLoading(true));
-                setTimeout(() => {
-                  setDownInfo([
-                    '<18',
-                    'Blindness',
-                    '0 (Orphan)',
-                  ]);
-                  dispatch(SettingActions.setLoading(false));
-                }, 500);
-              }}
-            >
-              Criteria
-            </div>
-            <p>To qualify as a recipient under this Contract, the individual must meet the following criteria ("Criteria"):</p>
-            <ul className='list-disc ml-8 my-4'>
-              <li>
-                <strong>Age Group:</strong>
-                {' '}
-
-                <span className={`${downInfo[0] === '<18' ? 'font-bold' : ''}`}>{downInfo[0]}</span>
-
-              </li>
-              <li>
-                <strong>Disability:</strong>
-                {' '}
-                <span className={`${downInfo[1] === 'Blindness' ? 'font-bold' : ''}`}>{downInfo[1]}</span>
-              </li>
-              <li>
-                <strong>Family Members:</strong>
-                {' '}
-                <span className={`${downInfo[2] === '0 (Orphan)' ? 'font-bold' : ''}`}>
-                  {' '}
-                  {downInfo[2]}
-                </span>
-              </li>
-              <li>
-                <strong>Income:</strong>
-                {' '}
-                All
-              </li>
-            </ul>
-
+           
             <div className='text-2xl font-bold mt-8'>Payment Delivery</div>
             <p>The payment under this Contract shall be delivered directly to the hospital where the recipient is receiving treatment. The details of the hospital and the mode of payment will be coordinated between the Donor and the hospital administration.</p>
 
