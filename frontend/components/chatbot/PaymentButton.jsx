@@ -15,6 +15,7 @@ const PaymentButton = (props) => {
     },
   ];
   const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [modalClosed, setModalClosed] = useState(false);
   const [paymentSuccess, setPaymentSuccess] = useState(false);
   const [paymentCancel, setPaymentCancel] = useState(false);
 
@@ -26,6 +27,7 @@ const PaymentButton = (props) => {
       dispatch(SettingActions.setLoading(false));
       setPaymentCancel(true);
       setPaymentSuccess(false);
+      setModalClosed(false);
       setModalIsOpen(false);
       setTimeout(() => {
         setPaymentCancel(false);
@@ -54,10 +56,11 @@ const PaymentButton = (props) => {
     setTimeout(() => {
 
       dispatch(SettingActions.setLoading(false));
+      setModalClosed(true);
       setPaymentSuccess(true);
       closeModal();
       setTimeout(() => {
-        setPaymentSuccess(false);
+        setModalClosed(false);
       }, 2000);
     }, 2000); // Simulate payment processing time
   };
@@ -67,7 +70,8 @@ const PaymentButton = (props) => {
       <button
         key={option.id}
         onClick={openModal}
-        className="bg-blue-600 text-white border-none px-4 py-2 rounded cursor-pointer"
+        className={`text-white border-none px-4 py-2 rounded ${paymentSuccess ? 'bg-gray-500 cursor-not-allowed' : 'bg-blue-600 cursor-pointer'}`}
+        disabled={paymentSuccess}
       >
         {option.text}
       </button>
@@ -128,7 +132,7 @@ const PaymentButton = (props) => {
           </button>
         </form>
       </Modal>
-      {paymentSuccess && (
+      {modalClosed && (
         <div className="payment-success">Payment Successful!</div>
       )}
       {paymentCancel && (
