@@ -26,13 +26,18 @@ class ActionProvider {
       'Would you like to change the criteria of patients to donate to?'
     ];
   
-    messages.forEach((message) => {
-      const randomDelay = Math.random() * (1300 - 500) + 500; 
+    const delays = [0, ,500 ,1000, 2000, 3000]; // Hardcoded delays for each message
+  
+    messages.forEach((message, index) => {
       setTimeout(() => {
         this.updateChatbotState(this.createChatBotMessage(message));
-      }, randomDelay);
+      }, delays[index]);
     });
-  }  
+  }
+  
+  
+  
+  
 
   handleChangeCriteria() {
     const message = this.createChatBotMessage('Would you like to change the criteria of patients to donate to?');
@@ -45,29 +50,29 @@ class ActionProvider {
     const messages = [
       'Your list has been updated as shown on the right panel.',
       'If you need any changes, please feel free to let me know',
-     
     ];
   
-    messages.forEach((message) => {
-      const randomDelay = Math.random() * (1200 - 500) + 500; 
+    const delays = [500, 1200]; // Hardcoded delays for each message
+  
+    messages.forEach((message, index) => {
       setTimeout(() => {
         this.updateChatbotState(this.createChatBotMessage(message));
-      }, randomDelay);
+      }, delays[index]);
     });
-
-     const totalDelay = messages.length * 1500;
-     setTimeout(() => {
-       this.updateChatbotState(
-         this.createChatBotMessage(
-           "Once confirmed, you may proceed with the payment",
-           {
-             widget: "paymentButton",
-           }
-         )
-       );
-     }, totalDelay);
-
+  
+    const totalDelay = delays.reduce((a, b) => a + b, 0); // Sum of all delays
+    setTimeout(() => {
+      this.updateChatbotState(
+        this.createChatBotMessage(
+          "Once confirmed, you may proceed with the payment",
+          {
+            widget: "paymentButton",
+          }
+        )
+      );
+    }, totalDelay + 500); // Adding an additional delay to ensure it runs after the previous messages
   }
+  
 
 
   handleLast() {
