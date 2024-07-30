@@ -96,12 +96,6 @@ a {
   }
 }
 
-div,
-p,
-span {
-  font-size: 12px;
-  font-weight: 300;
-}
 
 .f-9,
 .btn-f-9 span,
@@ -430,7 +424,9 @@ p.bonus-title {
 .ant-upload-span .ant-upload-list-item-card-actions {
   font-size: 6px;
 }
-
+.ant-card {
+  border-radius: 15px !important; 
+}
 /* checkin */
 .checkin_border::after {
   content: "";
