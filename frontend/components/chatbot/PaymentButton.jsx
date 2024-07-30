@@ -1,4 +1,5 @@
 import React from "react";
+import styles from "./button.module.css"
 
 const PaymentButton = (props) => {
   const options = [
@@ -19,7 +20,7 @@ const PaymentButton = (props) => {
     </button>
   ));
 
-  return <div>{buttonsMarkup}</div>;
+  return <div className={styles.optionButton}>{buttonsMarkup}</div>;
 };
 
 export default PaymentButton;
