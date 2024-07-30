@@ -39,7 +39,7 @@ function DonatePage2({ data }) {
   const [smartContract, setSmartContract] = useState(null);
   const [showSmartContract, setShowSmartContract] = useState(false);
   const [updateSmartContract, setUpdateSmartcontract] = useState(false);
-  const [amountUserKeyIn, setAmountUserKeyIn] = useState(0);
+  const [amountUserKeyIn, setAmountUserKeyIn] = useState(25000);
 
   const [downInfo, setDownInfo] = useState([
     'All age groups',
