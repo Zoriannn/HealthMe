@@ -4,8 +4,8 @@ import PaymentButton from "./PaymentButton";
 const config = {
   botName: "HealthMe",
   initialMessages: [
-    createChatBotMessage(`Good morning, Jason`),
-    createChatBotMessage(`How much would you like to contribute as a donation? Default: RM25000 (max) for Joe Doe request.`),
+    createChatBotMessage(`Good morning, Jason!`),
+    createChatBotMessage(`How much would you like to contribute as a donation? Default: RM25000 (max) for John Doe request.`),
   ],
   widgets: [
     {
