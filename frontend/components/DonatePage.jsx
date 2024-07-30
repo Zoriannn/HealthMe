@@ -40,9 +40,10 @@ function DonatePage({ data }) {
   const [showSmartContract, setShowSmartContract] = useState(false);
   const [updateSmartContract, setUpdateSmartcontract] = useState(false);
   const [amountUserKeyIn, setAmountUserKeyIn] = useState(0);
+
   const [downInfo, setDownInfo] = useState([
     'All age groups',
-    'Yes (the individual must have a disability)',
+    'Not specified',
     'All income levels',
   ]);
 
@@ -116,7 +117,9 @@ function DonatePage({ data }) {
             </div>
             <p>
               The domain for this donation is specifically for individuals with
-              <strong> brain-related issues ("Domain")</strong>
+{' '}
+              {amountUserKeyIn !== 0 ? <strong> brain-related issues ("Domain")</strong> : '-'}
+             
             </p>
 
             <div

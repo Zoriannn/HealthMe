@@ -20,9 +20,10 @@ class ActionProvider {
   handleMoney() {
     const messages = [
       'By default, your sum of money will be distributed to patients who match the criteria below:',
-      '- Domain: All',
+      '- Disability: None',
       '- Age: All',
       '- Family Members: All',
+      '- Income: All Ranges',
       'Would you like to change the criteria of patients to donate to?'
     ];
 
@@ -38,13 +39,16 @@ class ActionProvider {
     this.updateChatbotState(message);
   }
 
+
+  
   handleOrphanedChildrenWithBlindness() {
     const messages = [
-      'Your list has been updated as below:',
-      '- Domain: Blindness (All)',
-      '- Age: <18',
-      '- Family Members: 0'
+      'Your list has been updated as shown on the right panel.',
+      'If you need any changes, please feel free to let me know',
+      'Once confirmed, you may proceed with the payment',
+     
     ];
+
 
     messages.forEach((message, index) => {
       setTimeout(() => {
@@ -52,16 +56,6 @@ class ActionProvider {
       }, index * 1500);
     });
 
-    // Add the button message after the previous messages
-    setTimeout(() => {
-      const paymentButtonMessage = this.createChatBotMessage(
-        "",
-        {
-          widget: "paymentButton"
-        }
-      );
-      this.updateChatbotState(paymentButtonMessage);
-    }, messages.length * 1500);
   }
 
   handleLast() {

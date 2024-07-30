@@ -60,7 +60,8 @@ function Layout(props) {
     {
       key: 1,
       label: "Donate",
-      action: () => {
+      action: async () => {
+        await navigator.clipboard.writeText("RM50000 for brain diseases");
         dispatch(SettingActions.setLoading(true));
         router.push("/donate");
       },

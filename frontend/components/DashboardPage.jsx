@@ -62,7 +62,7 @@ function sendEmail(){
   emailjs.init("HaSTkYVTVmCvMEyXQ");
 
 
-  emailjs.send("service_buycl5v","template_yknhe8j")
+  emailjs.send("service_1lavbjn","template_yknhe8j")
   .then(() => alert("Thank you. The request is successfully sent."))
   .catch(err => console.error('Failed to send email:', err));
 }
