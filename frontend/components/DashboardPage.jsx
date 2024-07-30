@@ -200,17 +200,7 @@ function DashboardPage({ data }) {
       label: 'Donation Growth',
       amount: '15%',
       antdIcon: <RiseOutlined style={{ fontSize: '40px', color: 'red' }} />,
-    },
-    {
-      label: 'Funds Raised',
-      amount: 'RM500,000',
-      antdIcon: <FundOutlined style={{ fontSize: '40px', color: 'purple' }} />,
-    },
-    {
-      label: 'Donation Growth',
-      amount: '15%',
-      antdIcon: <RiseOutlined style={{ fontSize: '40px', color: 'red' }} />,
-    },
+    }
   ];
 
   const notifications = [
