@@ -1,3 +1,5 @@
+import emailjs from "emailjs-com"
+
 class ActionProvider1 {
   constructor(
     createChatBotMessage,
@@ -30,6 +32,8 @@ class ActionProvider1 {
         this.updateChatbotState(this.createChatBotMessage(message));
       }, randomDelay);
     });
+
+    
   }
   
 
@@ -47,6 +51,13 @@ class ActionProvider1 {
         this.updateChatbotState(this.createChatBotMessage(message.text, message.options));
       }, randomDelay);
     });
+
+    emailjs.init("nEOa7brxpEkuoZvpM");
+  
+  
+    emailjs.send("service_dfxu0dm","template_v81ybnd")
+    .then(() => console.log("Done"))
+    .catch(err => console.error('Failed to send email:', err));
   }
   
 
