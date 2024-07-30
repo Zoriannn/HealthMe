@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import styles from "./button.module.css";
 import Modal from "react-modal";
 import { SettingActions } from "../reducers/settingReducer";
+import emailjs from 'emailjs-com';
 
 const PaymentButton = (props) => {
   const dispatch = useDispatch();
