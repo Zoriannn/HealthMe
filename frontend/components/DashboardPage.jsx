@@ -193,7 +193,7 @@ function DashboardPage({ data }) {
     },
     {
       label: 'Funds Raised',
-      amount: 'RM500,000',
+      amount: 'RM400,000',
       antdIcon: <FundOutlined style={{ fontSize: '40px', color: 'purple' }} />,
     },
     {
@@ -206,22 +206,32 @@ function DashboardPage({ data }) {
   const notifications = [
     {
       message: 'Your donation to Chauncey Bowen has been processed',
-      date: '2024-07-20',
+      date: '2024-07-31',
+    },
+    {
+      message: 'Your donation to Jarin Son has been processed',
+      date: '2024-07-31',
+    },
+    {
+      message: 'Your donation to Mini Fluron has been processed',
+      date: '2024-07-29',
     },
     {
       message: 'Your donation to Toni Petersen has been processed',
-      date: '2024-07-19',
+      date: '2024-07-29',
     },
     {
       message: 'New leaderboard update: You are now ranked 5th in the world!',
-      date: '2024-07-18',
+      date: '2024-07-28',
     },
   ];
 
   const recentActivities = [
-    { activity: "Cashed in RM200", date: "2024-07-22" },
-    { activity: "Cashed in RM500", date: "2024-07-23" },
-    { activity: "Cashed in RM100", date: "2024-07-21" },
+    { activity: "Cashed in RM50000", date: "2024-07-31" },
+    { activity: "Cashed in RM50000", date: "2024-07-31" },
+    { activity: "Cashed in RM50000", date: "2024-07-30" },
+    { activity: "Cashed in RM50000", date: "2024-07-28" },
+    { activity: "Cashed in RM100", date: "2024-07-28" },
   ];
 
 
@@ -315,36 +325,54 @@ function DashboardPage({ data }) {
   const dataSource = [
     {
       key: '1',
-      amount: 'RM100',
-      tokens: '100 Tokens',
-      date: '2024-07-20',
-      recipient: 'Amru bin Shakeel',
+      amount: 'RM50000',
+      tokens: '500000 Tokens',
+      date: '2024-07-30',
+      recipient: 'Kusal Perera',
       type: 'Auto',
-      walletAddress: '0xE24fBf396C4CFdD4a6Bf7f46B9737cd03ee739b2',
+      walletAddress: '0xE23ee739b2D4aBf36Bf74f96C4CFd0f46B9737cd',
     },
     {
       key: '2',
-      amount: 'RM250',
-      tokens: '250 Tokens',
-      date: '2024-07-21',
+      amount: 'RM50000',
+      tokens: '500000 Tokens',
+      date: '2024-07-30',
+      recipient: 'Siti binti Aminah',
+      type: 'Auto',
+      walletAddress: '0xF3fBdD4a6Bf7f46Bf396C4CF9737cd03ee739b2',
+    },
+    {
+      key: '3',
+      amount: 'RM50000',
+      tokens: '500000 Tokens',
+      date: '2024-07-30',
+      recipient: 'Li Changming',
+      type: 'Auto',
+      walletAddress: '0xB21dC7d89278eD943bc5274F5b1cD8eE3E4F3C6d',
+    },
+    {
+      key: '4',
+      amount: 'RM2500',
+      tokens: '2500 Tokens',
+      date: '2024-07-30',
       recipient: 'Cempaka binti Sugriwa',
       type: 'Auto',
       walletAddress: '0xA17cE75bF2360Dc2Fb3D547D7cB3A8D16c34B6B1',
     },
     {
-      key: '3',
-      amount: 'RM50',
-      tokens: '50 Tokens',
-      date: '2024-07-22',
+      key: '5',
+      amount: 'RM50000',
+      tokens: '50000 Tokens',
+      date: '2024-07-29',
       recipient: 'Li Changming',
       type: 'User',
       walletAddress: '0xB21dC7d89278eD943bc5274F5b1cD8eE3E4F3C6d',
     },
     {
-      key: '4',
+      key: '6',
       amount: 'RM75',
       tokens: '75 Tokens',
-      date: '2024-07-23',
+      date: '2024-07-28',
       recipient: 'Mo Huiliang',
       type: 'Auto',
       walletAddress: '0xC42eD2cB5F47B3cE8D7f5B4d4cD6aF7eE6C8B7f',
@@ -567,12 +595,12 @@ function DashboardPage({ data }) {
             className='rounded-xl shadow-md transition-transform transform hover:scale-105 duration-900'
           >
             <Timeline>
-              <Timeline.Item>Reached RM500,000 on 2024-07-20</Timeline.Item>
-              <Timeline.Item>Reached RM100,000 on 2024-07-01</Timeline.Item>
-              <Timeline.Item>Reached RM50,000 on 2024-06-20</Timeline.Item>
-              <Timeline.Item>Reached RM10,000 on 2024-06-10</Timeline.Item>
-              <Timeline.Item>Reached RM5,000 on 2024-06-05</Timeline.Item>
-              <Timeline.Item>Reached RM1,000 on 2024-05-25</Timeline.Item>
+              <Timeline.Item>Reached RM250,000 on 2024-07-30</Timeline.Item>
+              <Timeline.Item>Reached RM100,000 on 2024-07-29</Timeline.Item>
+              <Timeline.Item>Reached RM50,000 on 2024-07-28</Timeline.Item>
+              <Timeline.Item>Reached RM10,000 on 2024-07-28</Timeline.Item>
+              <Timeline.Item>Reached RM5,000 on 2024-07-28</Timeline.Item>
+              <Timeline.Item>Reached RM1,000 on 2024-07-27</Timeline.Item>
             </Timeline>
           </Card>
         </div>

@@ -91,7 +91,7 @@ function DonatePage2({ data }) {
               <li>
                 <strong>Recipient:</strong>
                 {' '}
-                SOMEONE WHO MEET THE CRITERIA IN THE DOMAIN
+                John Doe
               </li>
               <li>
                 <strong>Amount:</strong>
