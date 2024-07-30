@@ -17,7 +17,7 @@ class ActionProvider {
     this.createCustomMessage = createCustomMessage;
   }
 
-  hhandleMoney() {
+  handleMoney() {
     const messages = [
       'By default, your sum of money will be distributed to patients who match the criteria below:',
       '- Domain: All',
