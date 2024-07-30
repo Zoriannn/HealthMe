@@ -251,7 +251,7 @@ function LoginPage({ data }) {
                 onClick={() => {
                   if (allowLogin) {
                     dispatch(SettingActions.setIsLogin(true));
-                    dispatch(SettingActions.setUsername("Jing Jie"));
+                    dispatch(SettingActions.setUsername("Jason"));
                     router.push("/dashboard");
                   } else {
                     dispatch(SettingActions.setLoading(true));

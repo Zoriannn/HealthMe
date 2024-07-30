@@ -79,7 +79,7 @@ function DonatePage({ data }) {
         <div className='w-2/3 p-4 overflow-y-scroll'>
           <div className='m-10 font-sans leading-7'>
             <h1 className='text-4xl font-bold text-center mb-5'>Donation Contract</h1>
-            <p>This Donation Contract ("Contract") is made and entered into on this 28 July 2024, by and between:</p>
+            <p>This Donation Contract ("Contract") is made and entered into on this 31st July 2024, by and between:</p>
 
             <ul className='list-disc ml-8 my-4'>
               <li>

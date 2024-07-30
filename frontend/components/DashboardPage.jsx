@@ -25,6 +25,7 @@ import 'antd/dist/antd.css';
 import 'leaflet/dist/leaflet.css';
 import 'chart.js/auto';
 import 'swiper/swiper-bundle.css';
+import emailjs from 'emailjs-com';
 
 // Dynamically import Donut from @ant-design/charts
 const Donut = dynamic(() => import('@ant-design/charts').then((mod) => mod.Donut), { ssr: false });
@@ -46,6 +47,25 @@ const Popup = dynamic(() => import("react-leaflet").then((mod) => mod.Popup), {
   ssr: false,
 });
 
+
+const serviceID = "service_1lavbjn";
+const templateID = "template_yknhe8j";
+
+const params = {
+};
+
+function sendEmail(){
+
+  
+  console.log("Sending email")
+
+  emailjs.init("HaSTkYVTVmCvMEyXQ");
+
+
+  emailjs.send("service_buycl5v","template_yknhe8j")
+  .then(() => alert("Thank you. The request is successfully sent."))
+  .catch(err => console.error('Failed to send email:', err));
+}
 const getTransactionApi = () =>
   axios
     .request({
@@ -125,6 +145,43 @@ function DashboardPage({ data }) {
     ]);
   }, []);
 
+  const donationLocations = [
+    {
+      id: 1,
+      name: 'Chauncey Bowen',
+      position: [3.139, 101.6869],
+      amount: 'RM100',
+      imageUrl: '/images/sickkid3.jpg',
+      transactions: [
+        { item: 'First Aid Kits', cost: '$30' },
+        { item: 'Antibiotics', cost: '$20' },
+        { item: 'Bandages and Dressings', cost: '$50' },
+      ],
+    },
+    {
+      id: 2,
+      name: 'Toni Petersen',
+      position: [1.3521, 103.8198],
+      amount: 'RM250',
+      imageUrl: '/images/sickkid2.jpg',
+      transactions: [
+        { item: 'Surgical Instruments', cost: 'RM100' },
+      { item: 'Patient Meals', cost: 'RM100' },
+      { item: 'Sterilization Equipment', cost: 'RM50' },
+      ],
+    },
+    {
+      id: 3,
+      name: 'Meritxell Mata',
+      position: [13.7563, 100.5018],
+      amount: 'RM50',
+      imageUrl: '/images/sickkid1.jpg',
+      transactions: [
+        { item: 'Clean Water for Patients', cost: 'RM50' },
+      ],
+    },
+  ];
+
   const openNotification = () => {
     notification.open({
       message: 'New Donation!',
@@ -194,17 +251,6 @@ function DashboardPage({ data }) {
     { activity: "Cashed in RM100", date: "2024-07-21" },
   ];
 
-  const donationLocations = [
-    {
-      id: 1, name: 'Chauncey Bowen', position: [3.139, 101.6869], amount: '$100',
-    }, // Kuala Lumpur, Malaysia
-    {
-      id: 2, name: 'Toni Petersen', position: [1.3521, 103.8198], amount: '$250',
-    }, // Singapore
-    {
-      id: 3, name: 'Meritxell Mata', position: [13.7563, 100.5018], amount: '$50',
-    }, // Bangkok, Thailand
-  ];
 
   const successStories = [
     {
@@ -336,14 +382,17 @@ function DashboardPage({ data }) {
     <Layout>
       <div className='w-2/3 mx-auto my-12 px-4'>
         <header className='mb-8'>
+
+      
           <div
             className='text-white text-center p-6 rounded-xl shadow-md bg-cover bg-center transition-transform transform hover:scale-105 duration-900'
             style={{ backgroundImage: 'url(/images/welcomeBanner.png)' }}
           >
             <h1 className='ml-14 text-3xl font-bold text-gray-800 animate-bounce'>
-              Welcome to HealthMe, {username || 'Jing Jie'}
+              Welcome to HealthMe, {username || 'Jason'}
             </h1>
-            <p className='mt-2 ml-14 text-xl text-gray-800'>
+            <Button onClick={sendEmail}>Hello</Button>
+            <p  className='mt-2 ml-14 text-xl text-gray-800'>
               Your Wealth For All. The Help For Everyone
             </p>
           </div>
@@ -379,7 +428,7 @@ function DashboardPage({ data }) {
                 0
               </span>
               <span className='text-black font-bold' style={{ fontSize: '15px' }}>
-                60,000 $HeMe
+                RM60,000
               </span>
             </div>
           </div>
@@ -402,22 +451,42 @@ function DashboardPage({ data }) {
                   attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                   url='https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
                 />
-                {donationLocations.map((location) => (
-                  <Marker
-                    key={location.id}
-                    position={location.position}
-                    icon={L.icon({
-                      iconUrl: '/images/marker-icon.png',
-                      iconSize: [32, 32],
-                    })}
-                  >
-                    <Popup>
-                      <b>{location.name}</b>
-                      <br />
-                      Donation Amount: {location.amount}
-                    </Popup>
-                  </Marker>
-                ))}
+               {donationLocations.map((location) => (
+  <Marker
+    key={location.id}
+    position={location.position}
+    icon={L.icon({
+      iconUrl: '/images/marker-icon.png',
+      iconSize: [32, 32],
+    })}
+  >
+    <Popup>
+      <div className="popup-content">
+        <img src={location.imageUrl} alt={location.name} style={{ width: '100%', height: 'auto', marginBottom: '10px' }} />
+        <b>{location.name}</b>
+        <br />
+        Donation Amount: {location.amount}
+        <br />
+        <table className="table-auto w-full mt-2">
+          <thead>
+            <tr>
+              <th className="px-4 py-2">Item</th>
+              <th className="px-4 py-2">Cost</th>
+            </tr>
+          </thead>
+          <tbody>
+            {location.transactions.map((transaction, index) => (
+              <tr key={index} className={index % 2 === 0 ? 'bg-gray-100' : 'bg-white'}>
+                <td className="border px-4 py-2">{transaction.item}</td>
+                <td className="border px-4 py-2">{transaction.cost}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </Popup>
+  </Marker>
+))}
               </MapContainer>
             </Card>
           )}
