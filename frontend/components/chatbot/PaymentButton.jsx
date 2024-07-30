@@ -48,7 +48,11 @@ const PaymentButton = (props) => {
 
   const buttonsMarkup = options.map((option) => (
     <>
-      <button key={option.id} onClick={openModal}>
+      <button
+        key={option.id}
+        onClick={openModal}
+        className="bg-blue-600 text-white border-none px-4 py-2 rounded cursor-pointer"
+      >
         {option.text}
       </button>
       <Modal
