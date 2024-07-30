@@ -21,7 +21,7 @@ class ActionProvider1 {
       'Analysing...',
       `Age: 43 & Disabled (Verified)`,
       ` There is a donation available for your case.`,
-    `Please submit your current salary slip as required. The funds will then be released to the hospital according to the donation contract.`,
+    `Please submit your current salary slip as required. If valid, the funds will then be released to the hospital according to the donation contract.`,
 
     ];
   
