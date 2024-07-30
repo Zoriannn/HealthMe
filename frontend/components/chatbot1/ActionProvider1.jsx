@@ -20,6 +20,10 @@ class ActionProvider1 {
     ));
     this.updateChatbotState(this.createChatBotMessage(
       `
+Amount: RM26000`,
+    ));
+    this.updateChatbotState(this.createChatBotMessage(
+      `
 Age: 43 & Disabled(verified)`,
     ));
     this.updateChatbotState(this.createChatBotMessage(

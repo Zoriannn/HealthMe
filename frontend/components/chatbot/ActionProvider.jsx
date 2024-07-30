@@ -45,7 +45,6 @@ class ActionProvider {
     const messages = [
       'Your list has been updated as shown on the right panel.',
       'If you need any changes, please feel free to let me know',
-      ,
      
     ];
 
