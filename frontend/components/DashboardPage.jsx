@@ -136,9 +136,9 @@ function DashboardPage({ data }) {
       amount: 'RM100',
       imageUrl: '/images/sickkid3.jpg',
       transactions: [
-        { item: 'First Aid Kits', cost: '$30' },
-        { item: 'Antibiotics', cost: '$20' },
-        { item: 'Bandages and Dressings', cost: '$50' },
+        { item: 'First Aid Kits', cost: 'RM30' },
+        { item: 'Antibiotics', cost: 'RM20' },
+        { item: 'Bandages and Dressings', cost: 'RM50' },
       ],
     },
     {
@@ -193,7 +193,7 @@ function DashboardPage({ data }) {
     },
     {
       label: 'Funds Raised',
-      amount: '$500,000',
+      amount: 'RM500,000',
       antdIcon: <FundOutlined style={{ fontSize: '40px', color: 'purple' }} />,
     },
     {
@@ -410,7 +410,7 @@ function DashboardPage({ data }) {
           {L && (
             <Card
               hoverable
-              className='rounded-xl shadow-md transition-transform transform hover:scale-105 duration-900'
+              className='rounded-xl shadow-md transition-transform transform hover:scale-105 duration-1000'
             >
               <h2 className='text-lg font-bold mb-3'>Donation Map</h2>
               <MapContainer

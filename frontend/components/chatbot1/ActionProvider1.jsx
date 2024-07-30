@@ -19,13 +19,13 @@ class ActionProvider1 {
   handleQuestion() {
     const messages = [
       'Analysing...',
-      `
-    Age: 43 & Disabled(verified)`,
-      `
-    There is a donation available for your case. Please submit your current salary slip.`,
+      `Age: 43 & Disabled (Verified)`,
+      ` There is a donation available for your case.`,
+    `Please submit your current salary slip as required. The funds will then be released to the hospital according to the donation contract.`,
+
     ];
   
-    const delays = [500, 900, 1400];
+    const delays = [500, 900, 1000, 1400];
   
     messages.forEach((message, index) => {
       setTimeout(() => {
@@ -42,12 +42,12 @@ class ActionProvider1 {
     const messages = [
       { text: 'Analysing...', options: {} },
       { text: '\nAnalysis Completed!', options: {} },
-      { text: '\nYou are eligible, would you like to proceed. [The contract stated the payment will be directly paid to the hospital]', options: { widget: "Complete" } },
-      { text: '\nYou are verified as B40. You are eligible, would you like to proceed. [The contract stated the payment will be directly paid to the hospital]', options: { widget: "Complete" } },
+      { text: '\nYou are verified as B40. You are eligible!', options: { widget: "Complete" } },
+      { text: 'Processing...', options: {} },
       { text: '\nThe donation details have been sent to all parties involved!', options: {} },
     ];
   
-    const delays = [500, 900, 1400]; 
+    const delays = [500, 700, 900, 1400, 4000]; 
   
     messages.forEach((message, index) => {
       setTimeout(() => {

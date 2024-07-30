@@ -20,7 +20,7 @@ class ActionProvider {
   handleMoney() {
     const messages = [
       'By default, your sum of money will be distributed to patients who match the criteria below:',
-      '- Domain: All',
+      '- Disability: Not specified',
       '- Age: All',
       '- Family Members: All',
       'Would you like to change the criteria of patients to donate to?'

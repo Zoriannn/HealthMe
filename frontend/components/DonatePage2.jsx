@@ -72,7 +72,7 @@ function DonatePage2({ data }) {
             actionProvider={ActionProvider}
           />
             <div className='w-full'>
-                <Button onClick={() => router.reload()} className='w-full bg-black text-white rounded-lg px-5 py-3 my-5'>Complete & Restart</Button>
+                <Button onClick={() => router.reload()} className='w-full bg-black text-white rounded-lg px-5 py-3 my-5'>Done? Restart</Button>
                </div>
 
         </div>

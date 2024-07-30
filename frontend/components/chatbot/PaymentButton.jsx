@@ -84,7 +84,7 @@ const PaymentButton = (props) => {
         <form onSubmit={handleSubmit}>
           <div>
             <label>Amount: </label>
-            <input type="text" disabled value={"$ 50,000"} />
+            <input type="text" disabled value={"RM 50,000"} />
           </div>
           <div>
             <label>Credit/Debit Card Number</label>

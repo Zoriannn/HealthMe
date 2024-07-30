@@ -83,7 +83,7 @@ else{
           {showSuccess &&  <div className="payment-success">Request Successful!</div>}
                     
            <div className='w-full'>
-                <Button onClick={() => router.reload()} className='w-full bg-black text-white rounded-lg px-5 py-3 my-5'>Complete & Restart</Button>
+                <Button onClick={() => router.reload()} className='w-full bg-black text-white rounded-lg px-5 py-3 my-5'>Done? Restart</Button>
                </div>
         </div>
         <div className='w-2/3 p-4'>

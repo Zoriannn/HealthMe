@@ -45,7 +45,7 @@ const healthProjects = [
   {
     title: "Blood Donation Campaign",
     description:
-      "Support our community blood donation campaign to ensure a stable supply of blood for emergencies.",
+      "Support blood donation campaign to ensure a stable supply of blood for emergencies.",
     details:
       "Our blood donation campaign aims to collect 500 units of blood to be used in local hospitals. The campaign will run for a month and includes several donation drives across the city. Your support helps save lives.",
     buttonText: "Contribute Now",
@@ -67,7 +67,7 @@ const healthProjects = [
   {
     title: "Medical Supplies for Rural Clinic",
     description:
-      "Help us provide essential medical supplies to a rural clinic serving an underprivileged community.",
+      "Provide essential medical supplies to a rural clinic serving an underprivileged community.",
     details:
       "The rural clinic in question serves a community of over 10,000 people, many of whom lack access to basic healthcare. The clinic needs medical supplies, including medicines, bandages, and diagnostic tools, totaling RM15,000. Your donation can improve healthcare access.",
     buttonText: "Donate Now",
