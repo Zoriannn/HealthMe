@@ -41,6 +41,7 @@ function RequestPage({ data }) {
   const dispatch = useDispatch();
   const [showImage1, setShowImage1] = useState(false);
   const [showImage2, setShowImage2] = useState(false);
+  const [showSuccess, setShowSuccess] = useState(false)
 
   useEffect(() => {
     dispatch(SettingActions.setLoading(false));
@@ -78,6 +79,9 @@ else{
           messageParser={MessageParser1}
           actionProvider={ActionProvider1}
           />
+
+          {showSuccess &&  <div className="payment-success">Request Successful!</div>}
+                    
            <div className='w-full'>
                 <Button onClick={() => router.reload()} className='w-full bg-black text-white rounded-lg px-5 py-3 my-5'>Complete & Restart</Button>
                </div>
@@ -112,11 +116,13 @@ else{
                </Dragger>
 
                <div className='flex gap-4'>
-                {showImage1 &&  <img src="/images/image2.jpeg" className="w-1/4" alt=""/>}
-                {showImage2 &&  <img src="/images/image1.jpeg" className="w-1/4" alt=""/>}
+                {showImage1 &&  <img src="/images/image2.jpeg" className="w-1/4" alt="" onClick={() => setShowSuccess(true)}/>}
+                {showImage2 &&  <img src="/images/image1.jpeg" className="w-1/4" alt="" onClick={() => setShowSuccess(true)}/>}
 
                
                </div>
+
+    
 
               
         </div>
