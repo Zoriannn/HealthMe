@@ -15,39 +15,38 @@ class ActionProvider1 {
   }
 
   handleQuestion() {
-    this.updateChatbotState(this.createChatBotMessage(
+    const messages = [
       'Analysing...',
-    ));
-    this.updateChatbotState(this.createChatBotMessage(
       `
-Amount: RM26000`,
-    ));
-    this.updateChatbotState(this.createChatBotMessage(
+  Age: 43 & Disabled(verified)`,
       `
-Age: 43 & Disabled(verified)`,
-    ));
-    this.updateChatbotState(this.createChatBotMessage(
-      `
-There is a donation available for your case. Please submit your current salary slip.`,
-    ));
+  There is a donation available for your case. Please submit your current salary slip.`,
+    ];
   
+    messages.forEach((message) => {
+      const randomDelay = Math.random() * (1300 - 500) + 500; 
+      setTimeout(() => {
+        this.updateChatbotState(this.createChatBotMessage(message));
+      }, randomDelay);
+    });
   }
+  
 
   handleQuestion2() {
-    this.updateChatbotState(this.createChatBotMessage(
-      'Analysing...',
-    ));
-    this.updateChatbotState(this.createChatBotMessage(
-      `
-Analysis Completed!`,
-    ));
-    this.updateChatbotState(this.createChatBotMessage(
-      `
-You are eligible, would you like to proceed. [The contract stated the payment will be directly pay to the hospital]`,  {
-  widget: "Complete",
-}
-    ));
+    const messages = [
+      { text: 'Analysing...', options: {} },
+      { text: '\nAnalysis Completed!', options: {} },
+      { text: '\nYou are eligible, would you like to proceed. [The contract stated the payment will be directly paid to the hospital]', options: { widget: "Complete" } }
+    ];
+  
+    messages.forEach((message) => {
+      const randomDelay = Math.random() * (1300 - 500) + 500; 
+      setTimeout(() => {
+        this.updateChatbotState(this.createChatBotMessage(message.text, message.options));
+      }, randomDelay);
+    });
   }
+  
 
 
   handleEnd() {
