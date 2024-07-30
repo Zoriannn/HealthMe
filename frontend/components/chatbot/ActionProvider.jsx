@@ -45,7 +45,7 @@ class ActionProvider {
     const messages = [
       'Your list has been updated as shown on the right panel.',
       'If you need any changes, please feel free to let me know',
-      'Once confirmed, you may proceed with the payment',
+      ,
      
     ];
 
@@ -55,6 +55,18 @@ class ActionProvider {
         this.updateChatbotState(this.createChatBotMessage(message));
       }, index * 1500);
     });
+
+    const totalDelay = messages.length * 1500;
+    setTimeout(() => {
+      this.updateChatbotState(this.createChatBotMessage(
+        'Once confirmed, you may proceed with the payment',
+        {
+          widget: "paymentButton"
+        }
+      ));
+    }, totalDelay);
+
+
 
   }
 
