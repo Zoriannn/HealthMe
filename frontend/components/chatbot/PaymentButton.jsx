@@ -34,9 +34,6 @@ const PaymentButton = (props) => {
   };
 
   function sendEmail(){
-
-  
-    console.log("Sending email")
   
     emailjs.init("nEOa7brxpEkuoZvpM");
   
