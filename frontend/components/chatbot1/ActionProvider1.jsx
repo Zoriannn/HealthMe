@@ -38,7 +38,9 @@ class ActionProvider1 {
     const messages = [
       { text: 'Analysing...', options: {} },
       { text: '\nAnalysis Completed!', options: {} },
-      { text: '\nYou are eligible, would you like to proceed. [The contract stated the payment will be directly paid to the hospital]', options: { widget: "Complete" } }
+      { text: '\nYou are eligible, would you like to proceed. [The contract stated the payment will be directly paid to the hospital]', options: { widget: "Complete" } },
+      { text: '\nYou are verified as B40. You are eligible, would you like to proceed. [The contract stated the payment will be directly paid to the hospital]', options: { widget: "Complete" } },
+      { text: '\nThe donation details have been sent to all parties involved!', options: {} },
     ];
   
     const delays = [500, 900, 1400]; 
