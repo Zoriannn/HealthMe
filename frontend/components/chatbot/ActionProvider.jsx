@@ -17,22 +17,22 @@ class ActionProvider {
     this.createCustomMessage = createCustomMessage;
   }
 
-  handleMoney() {
+  hhandleMoney() {
     const messages = [
       'By default, your sum of money will be distributed to patients who match the criteria below:',
-      '- Disability: None',
+      '- Domain: All',
       '- Age: All',
       '- Family Members: All',
-      '- Income: All Ranges',
       'Would you like to change the criteria of patients to donate to?'
     ];
-
-    messages.forEach((message, index) => {
+  
+    messages.forEach((message) => {
+      const randomDelay = Math.random() * (1300 - 500) + 500; 
       setTimeout(() => {
         this.updateChatbotState(this.createChatBotMessage(message));
-      }, index * 1500);
+      }, randomDelay);
     });
-  }
+  }  
 
   handleChangeCriteria() {
     const message = this.createChatBotMessage('Would you like to change the criteria of patients to donate to?');
@@ -43,20 +43,20 @@ class ActionProvider {
   
   handleOrphanedChildrenWithBlindness() {
     const messages = [
-      'Your list has been updated as shown on the right panel.',
-      'If you need any changes, please feel free to let me know',
-      'Once confirmed, you may proceed with the payment',
-     
+      'Your list has been updated as below:',
+      '- Domain: Blindness (All)',
+      '- Age: <18',
+      '- Family Members: 0'
     ];
-
-
-    messages.forEach((message, index) => {
+  
+    messages.forEach((message) => {
+      const randomDelay = Math.random() * (1200 - 500) + 500; 
       setTimeout(() => {
         this.updateChatbotState(this.createChatBotMessage(message));
-      }, index * 1500);
+      }, randomDelay);
     });
-
   }
+
 
   handleLast() {
     this.updateChatbotState(this.createChatBotMessage(`Processing completed`));
